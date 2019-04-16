@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 	public float moveSpeed = 5.0f;
 	public float drag = .5f;
 	public float terminalRotationSpeed = 25f;
+	public VirtualJoystick moveJoystick;
 
 	private Rigidbody controller;
 	private Transform camTransform;
@@ -31,6 +32,11 @@ public class PlayerController : MonoBehaviour
 		if(dir.magnitude > 1)
 		{
 			dir.Normalize();
+		}
+
+		if (moveJoystick.InputDirection != Vector3.zero)
+		{
+			dir = moveJoystick.InputDirection;
 		}
 
 		//Rotate our direction with the camera

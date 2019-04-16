@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\LevelManager.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\VirtualJoystick.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
