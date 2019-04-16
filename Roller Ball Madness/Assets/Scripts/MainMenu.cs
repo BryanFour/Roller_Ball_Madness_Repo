@@ -8,7 +8,31 @@ using UnityEngine.SceneManagement;
 // Video 3 - https://www.youtube.com/watch?v=S1fRoRbNwSs&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=4
 // Video 4 - https://www.youtube.com/watch?v=FqzZor_FRvo&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=5
 // Video 5 - https://www.youtube.com/watch?v=A54aq0pniVo&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=6
-// video 6 - https://www.youtube.com/watch?v=cQHF4_YPvsM&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=7 
+// Video 6 - https://www.youtube.com/watch?v=cQHF4_YPvsM&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=7 
+// Video 7 - https://www.youtube.com/watch?v=zXLkXMPc760&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=15 -- Buying skins for correct prices and Displaying correct Best times.
+// Video 8 - https://www.youtube.com/watch?v=HvH5I4-BWxM&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=16 -- Locking/unloacking levels depending on completion.
+
+
+public class LevelData
+{
+	public LevelData(string levelName)
+	{
+		string data = PlayerPrefs.GetString(levelName);
+		if (data == "")
+		{
+			return;
+		}
+		string[] allData = data.Split('&'); // Split the data at the & sign.
+		BestTime = float.Parse(allData[0]);
+		SilverTime = float.Parse(allData[1]);
+		GoldTime = float.Parse(allData[2]);
+
+	}
+
+	public float BestTime { set; get; }
+	public float SilverTime { set; get; }
+	public float GoldTime { set; get; }
+}
 
 public class MainMenu : MonoBehaviour
 {
@@ -25,6 +49,11 @@ public class MainMenu : MonoBehaviour
 	private Transform cameraTransform;
 	private Transform cameraDesiredLookAt;
 
+	private bool nextLevelLocked = false;
+
+	// 16 skins, 16 prices, change as needed.
+	private int[] costs = { 0, 150, 150, 150, 300, 300, 300, 300, 500, 500, 500, 500, 1000, 1250, 1500, 2000 };
+
 	private void Start()
 	{
 		ChangePlayerSkin(GameManager.Instance.currentSkinIndex);
@@ -37,6 +66,16 @@ public class MainMenu : MonoBehaviour
 			GameObject container = Instantiate(levelButtonPrefab) as GameObject; // Create a new button
 			container.GetComponent<Image>().sprite = thumbnail; // Change background image for the thumbnail
 			container.transform.SetParent(levelButtonContainer.transform,false); //Set the prefabs parent to levelButtonContainer. // The "false" tells the prefab not to use its own position but instead use the parents position.
+			LevelData level = new LevelData(thumbnail.name);
+			container.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = (level.BestTime != 0.0f) ? level.BestTime.ToString("f") : "";
+
+			container.transform.GetChild(1).GetComponent<Image>().enabled = nextLevelLocked; // Have the LockedOverlay enabled/disabled depending on wether nextLevellocked is true or false.
+			container.GetComponent<Button>().interactable = !nextLevelLocked; // Make the ButtonPanel interactable/not interactable depending on wether nextLevelLocked is true or false.
+
+			if (level.BestTime == 0.0f) // if we have not completed this level
+			{
+				nextLevelLocked = true;
+			}
 
 			string sceneName = thumbnail.name;
 			container.GetComponent<Button>().onClick.AddListener(() => LoadLevel(sceneName));
@@ -52,7 +91,7 @@ public class MainMenu : MonoBehaviour
 
 			int index = textureIndex;
 			container.GetComponent<Button>().onClick.AddListener(() => ChangePlayerSkin(index));
-			
+			container.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = costs[index].ToString(); // Get the skin price text component and change it to the cost set in the costs[] array.
 			if ((GameManager.Instance.skinAvailability & 1 << index) == 1 << index)
 			{
 				container.transform.GetChild(0).gameObject.SetActive(false);
@@ -110,7 +149,7 @@ public class MainMenu : MonoBehaviour
 		else
 		{
 			//You do not have the skin doyou want to buy it?
-			int cost = 100;
+			int cost = costs[index];
 
 			if (GameManager.Instance.currency >= cost)
 			{

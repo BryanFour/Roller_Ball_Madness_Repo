@@ -10,11 +10,18 @@ public class PlayerController : MonoBehaviour
 	public float terminalRotationSpeed = 25f;
 	public VirtualJoystick moveJoystick;
 
+	//Boost Stuff
+	public float boostSpeed = 5f;
+	public float boostCooldown = 2f;
+	private float lastBoost;
+
 	private Rigidbody controller;
 	private Transform camTransform;
 
 	private void Start()
 	{
+		lastBoost = Time.time - boostCooldown; // Enables the boost as soon as the game starts, otherwise the game would start with the boost cooldown in effect.
+
 		controller = GetComponent<Rigidbody>();
 		controller.maxAngularVelocity = terminalRotationSpeed;
 		controller.drag = drag;
@@ -45,5 +52,14 @@ public class PlayerController : MonoBehaviour
 		rotatedDir = rotatedDir.normalized * dir.magnitude;
 
 		controller.AddForce(rotatedDir * moveSpeed);
+	}
+
+	public void Boost()
+	{
+		if(Time.time - lastBoost > boostCooldown)
+		{
+			lastBoost = Time.time;
+			controller.AddForce(controller.velocity.normalized * boostSpeed, ForceMode.VelocityChange);
+		}
 	}
 }

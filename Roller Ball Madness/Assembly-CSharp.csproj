@@ -60,14 +60,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Dungeon Pack\Scripts\ChestDemo.cs" />
+    <Compile Include="Assets\Dungeon Pack\Scripts\MaterialMover.cs" />
+    <Compile Include="Assets\Dungeon Pack\Scripts\Rotator.cs" />
+    <Compile Include="Assets\Dungeon Pack\Scripts\SpikeTrapDemo.cs" />
+    <Compile Include="Assets\Dungeon Pack\Scripts\TrapDoorDemo.cs" />
     <Compile Include="Assets\Resources\Player\TextureGuide.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\DestroyableObject.cs" />
     <Compile Include="Assets\Scripts\FreeCamera.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\LevelManager.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Switch.cs" />
     <Compile Include="Assets\Scripts\VirtualJoystick.cs" />
+    <Compile Include="Assets\Scripts\WinScript.cs" />
+    <None Include="Assets\UI\Pannels and Buttons\Spritesheet\greySheet.xml" />
+    <None Include="Assets\UI\Pannels and Buttons\license.txt" />
+    <None Include="Assets\UI\Pannels and Buttons\Spritesheet\greenSheet.xml" />
+    <None Include="Assets\UI\On Screen Controlls\license.txt" />
+    <None Include="Assets\UI\Pannels and Buttons\Spritesheet\redSheet.xml" />
+    <None Include="Assets\UI\UI Pack 2\README.txt" />
+    <None Include="Assets\UI\Pannels and Buttons\Spritesheet\blueSheet.xml" />
+    <None Include="Assets\UI\Pannels and Buttons\Spritesheet\yellowSheet.xml" />
+    <None Include="Assets\UI\UI Pack\ReadMe.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

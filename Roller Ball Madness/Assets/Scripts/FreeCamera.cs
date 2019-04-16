@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// Video 1 - https://www.youtube.com/watch?v=A4Hyh4UdslQ&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=12
+// Video 1 - https://www.youtube.com/watch?v=A4Hyh4UdslQ&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=12 --- Comments have alternate solutions to try
 // Video 2 - https://www.youtube.com/watch?v=Ta7v27yySKs - Restrict cameras up/down to 90 degrees
 
 public class FreeCamera : MonoBehaviour
@@ -16,7 +16,7 @@ public class FreeCamera : MonoBehaviour
 
 	private Camera cam;
 
-	private float distance = 10f; // distance between player and camera
+	private float distance = 20f; // distance between player and camera
 	private float currentX = 0f;
 	private float currentY = 0f;
 	private float sensitivityX = 3f;
@@ -42,8 +42,8 @@ public class FreeCamera : MonoBehaviour
 		Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
 		camTransform.position = lookAt.position + rotation * dir;
 		camTransform.LookAt(lookAt.position);
-		//transform.position = lookAt.position + rotation * dir;
-		//transform.LookAt(lookAt);
+		//transform.position = lookAt.position + rotation * dir; // Commented out due to changes in Video 2
+		//transform.LookAt(lookAt); // Commented out due to changes in Video 2
 	}
 
 }
