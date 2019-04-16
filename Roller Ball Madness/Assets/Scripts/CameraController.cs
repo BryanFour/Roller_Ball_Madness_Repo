@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 // Video 1 - https://www.youtube.com/watch?v=KPCV89buN4o&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=9 
+// Video 2 - https://www.youtube.com/watch?v=0ee_Mjzb3Jk&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=11 --- Swipe Functions
+
+	/// <summary>
+	/// /////////////////////////////// This script is only used for the swipe camera
+	/// </summary>
 
 public class CameraController : MonoBehaviour
 {
@@ -32,7 +37,7 @@ public class CameraController : MonoBehaviour
 		{
 			SlideCamera(false);
 		}
-
+		// Mobile touch input stuff
 		if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
 		{
 			touchPosition = Input.mousePosition;
@@ -53,6 +58,7 @@ public class CameraController : MonoBehaviour
 				}
 			}
 		}
+		// Mobile touch input stuff end.
 	}
 
 	private void FixedUpdate()
