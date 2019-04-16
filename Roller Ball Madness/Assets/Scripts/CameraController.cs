@@ -10,6 +10,9 @@ public class CameraController : MonoBehaviour
 	private Vector3 offset;
 	private Vector3 desiredPosition;
 
+	private Vector2 touchPosition;
+	private float swipeResistance = 200f;
+
 	private float smoothSpeed = 7.5f;
 	private float distance =20f;
 	private float yOffset = 6.5f;
@@ -28,6 +31,27 @@ public class CameraController : MonoBehaviour
 		else if (Input.GetKeyDown(KeyCode.RightArrow))
 		{
 			SlideCamera(false);
+		}
+
+		if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+		{
+			touchPosition = Input.mousePosition;
+		}
+
+		if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
+		{
+			float swipeForce = touchPosition.x - Input.mousePosition.x;
+			if (Mathf.Abs(swipeForce) > swipeResistance)
+			{
+				if (swipeForce < 0) // If we swipe left
+				{
+					SlideCamera(true);
+				}
+				else // Slide camera right
+				{
+					SlideCamera(false);
+				}
+			}
 		}
 	}
 
