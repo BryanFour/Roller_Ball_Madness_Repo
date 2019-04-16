@@ -10,12 +10,15 @@ public class PlayerController : MonoBehaviour
 	public float terminalRotationSpeed = 25f;
 
 	private Rigidbody controller;
+	private Transform camTransform;
 
 	private void Start()
 	{
 		controller = GetComponent<Rigidbody>();
 		controller.maxAngularVelocity = terminalRotationSpeed;
 		controller.drag = drag;
+
+		camTransform = Camera.main.transform;
 	}
 
 	private void Update()
@@ -30,6 +33,11 @@ public class PlayerController : MonoBehaviour
 			dir.Normalize();
 		}
 
-		controller.AddForce(dir * moveSpeed);
+		//Rotate our direction with the camera
+		Vector3 rotatedDir = camTransform.TransformDirection(dir);
+		rotatedDir = new Vector3(rotatedDir.x, 0, rotatedDir.z);
+		rotatedDir = rotatedDir.normalized * dir.magnitude;
+
+		controller.AddForce(rotatedDir * moveSpeed);
 	}
 }
