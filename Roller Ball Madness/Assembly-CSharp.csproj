@@ -67,9 +67,12 @@
     <Compile Include="Assets\Dungeon Pack\Scripts\Rotator.cs" />
     <Compile Include="Assets\Dungeon Pack\Scripts\SpikeTrapDemo.cs" />
     <Compile Include="Assets\Dungeon Pack\Scripts\TrapDoorDemo.cs" />
+    <Compile Include="Assets\GE Common Assets\GE Toggle Full Screen\Scripts\GE_ToggleFullScreenUI.cs" />
+    <Compile Include="Assets\GE Common Assets\Scripts\GE_UIResponder.cs" />
     <Compile Include="Assets\Resources\Player\TextureGuide.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\DestroyableObject.cs" />
+    <Compile Include="Assets\Scripts\DestroyMe.cs" />
     <Compile Include="Assets\Scripts\FreeCamera.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\LevelManager.cs" />
@@ -79,29 +82,24 @@
     <Compile Include="Assets\Scripts\VirtualJoystick.cs" />
     <Compile Include="Assets\Scripts\WinScript.cs" />
     <None Include="Assets\UI\UI Pack\README.txt" />
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
-    </Reference>
+    <None Include="Assets\GE Common Assets\Readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Editor">
       <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PackageManagerUI.Editor">
+      <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Timeline">
       <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.CollabProxy.Editor">
+      <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-weaver.Editor">
       <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
@@ -114,6 +112,12 @@
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.DataPrivacy">
+      <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.XR.LegacyInputHelpers">
       <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
