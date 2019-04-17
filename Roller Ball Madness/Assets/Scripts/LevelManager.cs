@@ -40,6 +40,11 @@ public class LevelManager : MonoBehaviour
 		pauseMenu.SetActive(!pauseMenu.activeSelf);
 	}
 
+	public void RestartLevel()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+
 	public void ToMenu()
 	{
 		SceneManager.LoadScene("MainMenu");

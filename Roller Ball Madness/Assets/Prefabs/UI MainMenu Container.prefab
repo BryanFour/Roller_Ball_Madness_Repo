@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 3278556589648786611}
   - component: {fileID: 3278556589648786609}
   - component: {fileID: 3278556589648786608}
+  - component: {fileID: 1774089967}
   m_Layer: 5
   m_Name: ShopItemContainer
   m_TagString: Untagged
@@ -294,6 +295,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1774089967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3278556589648786614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a4130d35134ffa4ebe1c3a8990d8201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  padding: 10
+  elementSize: 80
+  viewSize: 369
+  leftPadding: 5
 --- !u!1 &3278556589694127308
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,6 +952,7 @@ GameObject:
   - component: {fileID: 3278556590736743217}
   - component: {fileID: 3278556590736743223}
   - component: {fileID: 3278556590736743222}
+  - component: {fileID: 693590381}
   m_Layer: 5
   m_Name: LevelButtonContainer
   m_TagString: Untagged
@@ -987,7 +1005,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: -38.5
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
@@ -1026,6 +1044,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &693590381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3278556590736743220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a4130d35134ffa4ebe1c3a8990d8201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  padding: 17
+  elementSize: 128
+  viewSize: 291
+  leftPadding: 0
 --- !u!1 &3278556591063965192
 GameObject:
   m_ObjectHideFlags: 0

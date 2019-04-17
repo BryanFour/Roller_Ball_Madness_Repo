@@ -11,6 +11,7 @@ using UnityEngine.SceneManagement;
 // Video 6 - https://www.youtube.com/watch?v=cQHF4_YPvsM&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=7 
 // Video 7 - https://www.youtube.com/watch?v=zXLkXMPc760&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=15 -- Buying skins for correct prices and Displaying correct Best times.
 // Video 8 - https://www.youtube.com/watch?v=HvH5I4-BWxM&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=16 -- Locking/unloacking levels depending on completion.
+// Video 9 - https://www.youtube.com/watch?v=LKTvt_SLN2s&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=27 -- 15 Mins: Make best time show in minutes and seconds rather than just seconds. -- Best time not saving anymore
 
 
 public class LevelData
@@ -67,7 +68,10 @@ public class MainMenu : MonoBehaviour
 			container.GetComponent<Image>().sprite = thumbnail; // Change background image for the thumbnail
 			container.transform.SetParent(levelButtonContainer.transform,false); //Set the prefabs parent to levelButtonContainer. // The "false" tells the prefab not to use its own position but instead use the parents position.
 			LevelData level = new LevelData(thumbnail.name);
-			container.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = (level.BestTime != 0.0f) ? level.BestTime.ToString("f") : "";
+
+			string minutes = ((int)level.BestTime / 60).ToString("00"); // Used to have the best time sow in seconds and minutes rather that just seconds.
+			string seconds = (level.BestTime % 60).ToString("00.00"); // Used to have the best time sow in seconds and minutes rather that just seconds. -------Best time nolonger saving
+			container.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = (level.BestTime != 0.0f) ? minutes + ":" + seconds : "Not Completed";
 
 			container.transform.GetChild(1).GetComponent<Image>().enabled = nextLevelLocked; // Have the LockedOverlay enabled/disabled depending on wether nextLevellocked is true or false.
 			container.GetComponent<Button>().interactable = !nextLevelLocked; // Make the ButtonPanel interactable/not interactable depending on wether nextLevelLocked is true or false.
