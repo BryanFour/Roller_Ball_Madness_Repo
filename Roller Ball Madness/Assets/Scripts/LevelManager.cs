@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 // Video ? - https://www.youtube.com/watch?v=3yesq9qmvUk&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=14
-// Video 3 - https://www.youtube.com/watch?v=UUbTAphpq40&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=18 Player repawn after falling off level.
+// Video 3 - https://www.youtube.com/watch?v=UUbTAphpq40&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=18 -- Player repawn after falling off level.
+// Video 4 - https://www.youtube.com/watch?v=aKfXXySFfYk&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=29 -- Timer
 
 public class LevelManager : MonoBehaviour
 {
@@ -12,9 +15,11 @@ public class LevelManager : MonoBehaviour
 
 	public GameObject pauseMenu;
 	public Transform respawnPoint;
+	public Text timerText;
 	private GameObject player;
 
 	private float startTime;
+	private float levelDuration; // how long we have been playing the level for.
 	public float silverTime;
 	public float goldTime;
 
@@ -33,20 +38,29 @@ public class LevelManager : MonoBehaviour
 		{
 			Death();
 		}
+
+		levelDuration = Time.time - startTime;
+		string minutes = ((int)levelDuration / 60).ToString("00"); // Used to have the timer show in seconds and minutes rather that just seconds.
+		string seconds = (levelDuration % 60).ToString("00.00"); // Used to have the timer show in seconds and minutes rather that just seconds.
+
+		timerText.text = minutes + ":" + seconds;
 	}
 
 	public void TogglePauseMenu()
 	{
 		pauseMenu.SetActive(!pauseMenu.activeSelf);
+		Time.timeScale = (pauseMenu.activeSelf) ? 0 : 1;
 	}
 
 	public void RestartLevel()
 	{
+		Time.timeScale = 1;
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
 	public void ToMenu()
 	{
+		Time.timeScale = 1;
 		SceneManager.LoadScene("MainMenu");
 	}
 
@@ -81,9 +95,10 @@ public class LevelManager : MonoBehaviour
 
 	public void Death()
 	{
-		player.transform.position = respawnPoint.position;
-		Rigidbody rigid = player.GetComponent<Rigidbody>();
-		rigid.velocity = Vector3.zero;
-		rigid.angularVelocity = Vector3.zero;
+		//player.transform.position = respawnPoint.position;
+		//Rigidbody rigid = player.GetComponent<Rigidbody>(); //// These are commented out becouse N3K commented them out intead of deleting them.
+		//rigid.velocity = Vector3.zero;
+		//rigid.angularVelocity = Vector3.zero;
+		RestartLevel();
 	}
 }
