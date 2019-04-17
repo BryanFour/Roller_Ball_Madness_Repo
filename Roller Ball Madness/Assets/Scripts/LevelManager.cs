@@ -7,9 +7,12 @@ using UnityEngine.UI;
 // Video ? - https://www.youtube.com/watch?v=3yesq9qmvUk&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=14
 // Video 3 - https://www.youtube.com/watch?v=UUbTAphpq40&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=18 -- Player repawn after falling off level.
 // Video 4 - https://www.youtube.com/watch?v=aKfXXySFfYk&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=29 -- Timer
+// Video 5 - https://www.youtube.com/watch?v=KcKo8QHOjlk&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=30 -- Time buffer/dely before game start
 
 public class LevelManager : MonoBehaviour
 {
+	private const float TIME_BEFORE_START = 3.0f;
+
 	private static LevelManager instance;
 	public static LevelManager Instance { get { return instance; } }
 
@@ -39,7 +42,12 @@ public class LevelManager : MonoBehaviour
 			Death();
 		}
 
-		levelDuration = Time.time - startTime;
+		if (Time.time - startTime < TIME_BEFORE_START)
+		{
+			return;
+		}
+
+		levelDuration = Time.time - (startTime + TIME_BEFORE_START);
 		string minutes = ((int)levelDuration / 60).ToString("00"); // Used to have the timer show in seconds and minutes rather that just seconds.
 		string seconds = (levelDuration % 60).ToString("00.00"); // Used to have the timer show in seconds and minutes rather that just seconds.
 

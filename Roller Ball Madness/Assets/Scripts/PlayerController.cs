@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 // Video 1 - https://www.youtube.com/watch?v=KPCV89buN4o&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=9
+// Video 2 - https://www.youtube.com/watch?v=KcKo8QHOjlk&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=30 Start time buffer
 
 public class PlayerController : MonoBehaviour
 {
+	private const float TIME_BEFORE_START = 3.0f;
+
 	public float moveSpeed = 5.0f;
 	public float drag = .5f;
 	public float terminalRotationSpeed = 25f;
@@ -18,9 +21,12 @@ public class PlayerController : MonoBehaviour
 	private Rigidbody controller;
 	private Transform camTransform;
 
+	private float startTime;
+
 	private void Start()
 	{
 		lastBoost = Time.time - boostCooldown; // Enables the boost as soon as the game starts, otherwise the game would start with the boost cooldown in effect.
+		startTime = Time.time;
 
 		controller = GetComponent<Rigidbody>();
 		controller.maxAngularVelocity = terminalRotationSpeed;
@@ -31,6 +37,11 @@ public class PlayerController : MonoBehaviour
 
 	private void Update()
 	{
+		if (Time.time - startTime < TIME_BEFORE_START)
+		{
+			return;
+		}
+
 		Vector3 dir = Vector3.zero;
 
 		dir.x = Input.GetAxis("Horizontal");
@@ -56,7 +67,12 @@ public class PlayerController : MonoBehaviour
 
 	public void Boost()
 	{
-		if(Time.time - lastBoost > boostCooldown)
+		if (Time.time - startTime < TIME_BEFORE_START)
+		{
+			return;
+		}
+
+		if (Time.time - lastBoost > boostCooldown)
 		{
 			lastBoost = Time.time;
 			controller.AddForce(controller.velocity.normalized * boostSpeed, ForceMode.VelocityChange);

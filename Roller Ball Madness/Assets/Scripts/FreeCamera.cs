@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 // Video 1 - https://www.youtube.com/watch?v=A4Hyh4UdslQ&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=12 --- Comments have alternate solutions to try
 // Video 2 - https://www.youtube.com/watch?v=Ta7v27yySKs - Restrict cameras up/down to 90 degrees
+// Video 3 - https://www.youtube.com/watch?v=KcKo8QHOjlk&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=30 -- Buffer time(Time till game starts after selecting a level)
 
 public class FreeCamera : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class FreeCamera : MonoBehaviour
 	private float sensitivityX = 3f;
 	private float sensitivityY = 1f;
 
+	private float startTime = 0f;
+	private const float TIME_BEFORE_START = 2.5f;
+
 	private void Start()
 	{
 		camTransform = transform;
@@ -30,6 +34,11 @@ public class FreeCamera : MonoBehaviour
 
 	private void Update()
 	{
+		if (Time.time - startTime < TIME_BEFORE_START)
+		{
+			return;
+		}
+
 		currentX += cameraJoystick.InputDirection.x * sensitivityX;
 		currentY += cameraJoystick.InputDirection.z * sensitivityY;
 
@@ -38,6 +47,11 @@ public class FreeCamera : MonoBehaviour
 
 	private void LateUpdate()
 	{
+		if (Time.time - startTime < TIME_BEFORE_START)
+		{
+			return;
+		}
+
 		Vector3 dir = new Vector3(0, 0, -distance);
 		Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
 		camTransform.position = lookAt.position + rotation * dir;
