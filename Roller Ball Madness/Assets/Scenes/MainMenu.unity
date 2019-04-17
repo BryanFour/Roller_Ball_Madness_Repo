@@ -661,11 +661,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI MainMenu Container
       objectReference: {fileID: 0}
-    - target: {fileID: 3278556590286607030, guid: ccd9036adb77e8e41853800185155d9e,
-        type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 3278556589598562209, guid: ccd9036adb77e8e41853800185155d9e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -786,11 +781,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1134028041}
-    - target: {fileID: 3278556590736743221, guid: ccd9036adb77e8e41853800185155d9e,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -1.7399979
-      objectReference: {fileID: 0}
     - target: {fileID: 3278556591308106070, guid: ccd9036adb77e8e41853800185155d9e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -801,10 +791,5 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1134028041}
-    - target: {fileID: 3278556590286607024, guid: ccd9036adb77e8e41853800185155d9e,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 160.51
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccd9036adb77e8e41853800185155d9e, type: 3}
