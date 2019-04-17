@@ -95,12 +95,11 @@ public class LevelManager : MonoBehaviour
 		endTimerText.text = minutes + ":" + seconds;
 		// End time text stuff. end
 
-		float duration = Time.time - startTime;
-		if (duration < goldTime)
+		if (levelDuration < goldTime)
 		{
 			GameManager.Instance.currency += 50;
 		}
-		else if (duration < silverTime)
+		else if (levelDuration < silverTime)
 		{
 			GameManager.Instance.currency += 25;
 		}
@@ -112,7 +111,7 @@ public class LevelManager : MonoBehaviour
 
 		string saveString = "";
 		LevelData level = new LevelData(SceneManager.GetActiveScene().name);
-		saveString += (level.BestTime > duration || level.BestTime == 0.0f) ? duration.ToString() : level.BestTime.ToString();
+		saveString += (level.BestTime > levelDuration || level.BestTime == 0.0f) ? levelDuration.ToString() : level.BestTime.ToString();
 		saveString += '&';
 		saveString += silverTime.ToString();
 		saveString += '&';

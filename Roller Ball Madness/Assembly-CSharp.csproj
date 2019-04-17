@@ -69,6 +69,7 @@
     <Compile Include="Assets\Dungeon Pack\Scripts\TrapDoorDemo.cs" />
     <Compile Include="Assets\GE Common Assets\GE Toggle Full Screen\Scripts\GE_ToggleFullScreenUI.cs" />
     <Compile Include="Assets\GE Common Assets\Scripts\GE_UIResponder.cs" />
+    <Compile Include="Assets\Notes.cs" />
     <Compile Include="Assets\Resources\Player\TextureGuide.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\ClampRectTransform.cs" />
