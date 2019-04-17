@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 // Video 1 - https://www.youtube.com/watch?v=LKTvt_SLN2s&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=27 
-
+// Video 2 - https://www.youtube.com/watch?v=cQmv_zkEZHY&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=31 -- Not using the code in this vid, it clamps everything neatly when the game starts, my stuff is already in the "neat" spot.
 public class ClampRectTransform : MonoBehaviour
 {
 	public float padding = 10f;

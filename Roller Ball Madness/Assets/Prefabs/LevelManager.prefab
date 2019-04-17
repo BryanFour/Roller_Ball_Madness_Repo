@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
+  endMenu: {fileID: 0}
   respawnPoint: {fileID: 0}
+  timerText: {fileID: 0}
   silverTime: 5
   goldTime: 2

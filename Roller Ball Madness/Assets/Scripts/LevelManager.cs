@@ -8,6 +8,7 @@ using UnityEngine.UI;
 // Video 3 - https://www.youtube.com/watch?v=UUbTAphpq40&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=18 -- Player repawn after falling off level.
 // Video 4 - https://www.youtube.com/watch?v=aKfXXySFfYk&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=29 -- Timer
 // Video 5 - https://www.youtube.com/watch?v=KcKo8QHOjlk&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=30 -- Time buffer/dely before game start
+// Video 6 - https://www.youtube.com/watch?v=cQmv_zkEZHY&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=31 -- Level End Panel/ win panel stuff
 
 public class LevelManager : MonoBehaviour
 {
@@ -17,8 +18,10 @@ public class LevelManager : MonoBehaviour
 	public static LevelManager Instance { get { return instance; } }
 
 	public GameObject pauseMenu;
+	public GameObject endMenu;
 	public Transform respawnPoint;
 	public Text timerText;
+	public Text endTimerText; // The time text that is on the win/level end panel 
 	private GameObject player;
 
 	private float startTime;
@@ -30,6 +33,7 @@ public class LevelManager : MonoBehaviour
 	{
 		instance = this;
 		pauseMenu.SetActive(false);
+		endMenu.SetActive(false);
 		startTime = Time.time;
 		player = GameObject.FindGameObjectWithTag("Player");
 		player.transform.position = respawnPoint.position;
@@ -74,6 +78,23 @@ public class LevelManager : MonoBehaviour
 
 	public void Victory()
 	{
+		foreach(Transform t in endMenu.transform.parent) // for everything in the endMenu's parent(Canvas)...
+		{
+			t.gameObject.SetActive(false); // turn off all the game objects.
+		}
+
+		endMenu.SetActive(true);
+
+		Rigidbody rigid = player.GetComponent<Rigidbody>();     ///	
+		rigid.constraints = RigidbodyConstraints.FreezeAll;     /// Stop the ball from moving after the level has completed
+		
+		// End time text stuff
+		levelDuration = Time.time - (startTime + TIME_BEFORE_START);
+		string minutes = ((int)levelDuration / 60).ToString("00"); // Used to have the timer show in seconds and minutes rather that just seconds.
+		string seconds = (levelDuration % 60).ToString("00.00"); // Used to have the timer show in seconds and minutes rather that just seconds.
+		endTimerText.text = minutes + ":" + seconds;
+		// End time text stuff. end
+
 		float duration = Time.time - startTime;
 		if (duration < goldTime)
 		{
@@ -97,8 +118,7 @@ public class LevelManager : MonoBehaviour
 		saveString += '&';
 		saveString += goldTime.ToString();
 		PlayerPrefs.SetString(SceneManager.GetActiveScene().name, saveString);
-
-		SceneManager.LoadScene("MainMenu");
+		
 	}
 
 	public void Death()
