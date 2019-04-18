@@ -10,6 +10,8 @@ using UnityEngine.UI;
 // Video 5 - https://www.youtube.com/watch?v=KcKo8QHOjlk&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=30 -- Time buffer/dely before game start
 // Video 6 - https://www.youtube.com/watch?v=cQmv_zkEZHY&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=31 -- Level End Panel/ win panel stuff
 
+
+
 public class LevelManager : MonoBehaviour
 {
 	private const float TIME_BEFORE_START = 3.0f;
@@ -22,6 +24,7 @@ public class LevelManager : MonoBehaviour
 	public Transform respawnPoint;
 	public Text timerText;
 	public Text endTimerText; // The time text that is on the win/level end panel 
+	public GameObject gameplayUICanvas;
 	private GameObject player;
 
 	private float startTime;
@@ -78,12 +81,11 @@ public class LevelManager : MonoBehaviour
 
 	public void Victory()
 	{
-		foreach(Transform t in endMenu.transform.parent) // for everything in the endMenu's parent(Canvas)...
+		foreach(Transform t in endMenu.transform.parent) // for everything in the endMenu's parent(the GamePlayUI Canvas)... 
 		{
 			t.gameObject.SetActive(false); // turn off all the game objects.
 		}
-
-		endMenu.SetActive(true);
+		endMenu.SetActive(true); // turn on the victory panel/Level end panel
 
 		Rigidbody rigid = player.GetComponent<Rigidbody>();     ///	
 		rigid.constraints = RigidbodyConstraints.FreezeAll;     /// Stop the ball from moving after the level has completed
@@ -95,17 +97,32 @@ public class LevelManager : MonoBehaviour
 		endTimerText.text = minutes + ":" + seconds;
 		// End time text stuff. end
 
+		// Star Stuff.
+		GameObject starOne = gameplayUICanvas.transform.GetChild(6).GetChild(3).GetChild(0).gameObject;
+		GameObject starTwo = gameplayUICanvas.transform.GetChild(6).GetChild(3).GetChild(1).gameObject;
+		GameObject starThree = gameplayUICanvas.transform.GetChild(6).GetChild(3).GetChild(2).gameObject;
+		// Star Stuff End.
+
 		if (levelDuration < goldTime)
 		{
 			GameManager.Instance.currency += 50;
+			// Enable 3 Stars
+			starOne.GetComponent<Image>().enabled = true;
+			starTwo.GetComponent<Image>().enabled = true;
+			starThree.GetComponent<Image>().enabled = true;
 		}
 		else if (levelDuration < silverTime)
 		{
 			GameManager.Instance.currency += 25;
+			// Enable 2 stars
+			starOne.GetComponent<Image>().enabled = true;
+			starTwo.GetComponent<Image>().enabled = true;
 		}
 		else
 		{
 			GameManager.Instance.currency += 10;
+			// enable 1 star.
+			starOne.GetComponent<Image>().enabled = true;
 		}
 		GameManager.Instance.Save();
 

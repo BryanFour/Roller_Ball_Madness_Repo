@@ -29,6 +29,9 @@ TextureImporter:
   - first:
       213: 4307974841799932549
     second: Window_8
+  - first:
+      213: -6591217038909382035
+    second: Window_9
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -267,7 +270,7 @@ TextureImporter:
         width: 132
         height: 127
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -288,7 +291,7 @@ TextureImporter:
         width: 172
         height: 166
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -309,7 +312,7 @@ TextureImporter:
         width: 134
         height: 127
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -317,6 +320,27 @@ TextureImporter:
       bones: []
       spriteID: d90e7e31b22d19c4a82b72a3ad7c5f89
       internalID: 4307974841799932549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Window_9
+      rect:
+        serializedVersion: 2
+        x: 1550
+        y: 1009
+        width: 619
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a5a95ad38aab494c95281d14abd280c
+      internalID: -6591217038909382035
       vertices: []
       indices: 
       edges: []

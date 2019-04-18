@@ -612,6 +612,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 109711157}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1776973428 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6274620201875343109, guid: d71b5b6fd698eb94c80e6cb4b5cc53b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6274620200661529697}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1946979155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -835,6 +841,11 @@ PrefabInstance:
       propertyPath: goldTime
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5050675495306483763, guid: 4fe91c3f904403f4bb73e94bf9667d16,
+        type: 3}
+      propertyPath: gameplayUICanvas
+      value: 
+      objectReference: {fileID: 1776973428}
     - target: {fileID: 5050675495306483762, guid: 4fe91c3f904403f4bb73e94bf9667d16,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -902,7 +913,7 @@ PrefabInstance:
     - target: {fileID: 6274620201875343109, guid: d71b5b6fd698eb94c80e6cb4b5cc53b5,
         type: 3}
       propertyPath: m_Name
-      value: GamePlayUI
+      value: GamePlayUI Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 6274620201875343113, guid: d71b5b6fd698eb94c80e6cb4b5cc53b5,
         type: 3}
