@@ -61,12 +61,13 @@ public class MainMenu : MonoBehaviour
 		currencyText.text = "Currency : " + GameManager.Instance.currency.ToString();
 		cameraTransform = Camera.main.transform;
 
-		Sprite[] thumbnails = Resources.LoadAll<Sprite>("Levels"); // Create an array of all sprites inside the Resores>Levels Folder
+		Sprite[] thumbnails = Resources.LoadAll<Sprite>("Levels"); // Create an array of all the sprites that are inside the Resores>Levels Folder
 		foreach(Sprite thumbnail in thumbnails) //For every sprite in this "thumbnails" array...
 		{
 			GameObject container = Instantiate(levelButtonPrefab) as GameObject; // Create a new button
-			container.GetComponent<Image>().sprite = thumbnail; // Change background image for the thumbnail
+			container.GetComponent<Image>().sprite = thumbnail; // Change background image for the thumbnail // Uncomment if this dosnt work
 			container.transform.SetParent(levelButtonContainer.transform,false); //Set the prefabs parent to levelButtonContainer. // The "false" tells the prefab not to use its own position but instead use the parents position.
+			
 			LevelData level = new LevelData(thumbnail.name);
 
 			string minutes = ((int)level.BestTime / 60).ToString("00"); // Used to have the best time sow in seconds and minutes rather that just seconds.
@@ -74,7 +75,8 @@ public class MainMenu : MonoBehaviour
 
 			container.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = (level.BestTime != 0.0f) ? minutes + ":" + seconds : "Not Completed";
 
-			container.transform.GetChild(1).GetComponent<Image>().enabled = nextLevelLocked; // Have the LockedOverlay enabled/disabled depending on wether nextLevellocked is true or false.
+			container.transform.GetChild(2).GetComponent<Image>().enabled = nextLevelLocked; // Have the LockedOverlays image componant enabled/disabled depending on wether nextLevellocked is true or false.
+			container.transform.GetChild(2).GetChild(0).GetComponent<Text>().enabled = nextLevelLocked; // Have the LockedOverlays childs text componant enabled/disabled depending on wether nextLevellocked is true or false.
 			container.GetComponent<Button>().interactable = !nextLevelLocked; // Make the ButtonPanel interactable/not interactable depending on wether nextLevelLocked is true or false.
 
 			if (level.BestTime == 0.0f) // if we have not completed this level

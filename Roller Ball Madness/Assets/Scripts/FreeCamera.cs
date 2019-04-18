@@ -9,19 +9,24 @@ public class FreeCamera : MonoBehaviour
 {
 	public VirtualJoystick cameraJoystick;
 
-	private const float Y_ANGLE_MIN = 0f;
-	private const float Y_ANGLE_MAX = 50f;
+	private const float Y_ANGLE_MIN = 8f;
+	private const float Y_ANGLE_MAX = 25f;
 
 	public Transform lookAt; // what the camera looks at
 	public Transform camTransform; 
 
 	private Camera cam;
 
-	private float distance = 20f; // distance between player and camera
+	[Range(0, 40)][Header("Distance Value")][Tooltip("The distance between the player and the camera.")]
+	[SerializeField] private float distance = 20f; // distance between player and camera
+
+	[Range(0, 5)][Header("Camera Sensitivity")][Tooltip("The camrea joysticks sensitivity.")]
+	[SerializeField] private float sensitivityX = 3f;
+	[Range(0, 5)]
+	[SerializeField] private float sensitivityY = 1f;
+
 	private float currentX = 0f;
 	private float currentY = 0f;
-	private float sensitivityX = 3f;
-	private float sensitivityY = 1f;
 
 	private float startTime = 0f;
 	private const float TIME_BEFORE_START = 2.5f;

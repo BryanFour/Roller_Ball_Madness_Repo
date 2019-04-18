@@ -71,7 +71,6 @@
     <Compile Include="Assets\GE Common Assets\Scripts\GE_UIResponder.cs" />
     <Compile Include="Assets\Notes.cs" />
     <Compile Include="Assets\Resources\Player\TextureGuide.cs" />
-    <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\ClampRectTransform.cs" />
     <Compile Include="Assets\Scripts\DestroyableObject.cs" />
     <Compile Include="Assets\Scripts\DestroyMe.cs" />
