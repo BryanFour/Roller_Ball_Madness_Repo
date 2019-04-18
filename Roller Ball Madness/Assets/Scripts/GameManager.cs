@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-	private static GameManager instance;
 	public static GameManager Instance { get { return instance; } }
+	public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
 
 	public int currentSkinIndex = 0;
 	public int currency = 0;
@@ -14,7 +14,22 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-		instance = this;
+
+		//Check if instance already exists
+		if (instance == null)
+		{
+			//if not, set instance to this
+			instance = this;
+		}
+		//If instance already exists and it's not this:
+		else if (instance != this)
+		{ 
+
+			//Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+			Destroy(gameObject);
+
+		}
+
 		DontDestroyOnLoad(gameObject);
 
 		if (PlayerPrefs.HasKey("CurrentSkin")) // If we have played before
