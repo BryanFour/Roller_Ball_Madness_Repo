@@ -12,6 +12,7 @@ using UnityEngine.SceneManagement;
 // Video 7 - https://www.youtube.com/watch?v=zXLkXMPc760&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=15 -- Buying skins for correct prices and Displaying correct Best times.
 // Video 8 - https://www.youtube.com/watch?v=HvH5I4-BWxM&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=16 -- Locking/unloacking levels depending on completion.
 // Video 9 - https://www.youtube.com/watch?v=LKTvt_SLN2s&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=27 -- 15 Mins: Make best time show in minutes and seconds rather than just seconds.
+// Video 10 - https://www.youtube.com/watch?v=_zsS_TJOrUQ&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=28 -- Enabling stars depending on how fast we have completed the level
 
 
 public class LevelData
@@ -60,7 +61,7 @@ public class MainMenu : MonoBehaviour
 		ChangePlayerSkin(GameManager.Instance.currentSkinIndex);
 		currencyText.text = "Currency : " + GameManager.Instance.currency.ToString();
 		cameraTransform = Camera.main.transform;
-
+		
 		Sprite[] thumbnails = Resources.LoadAll<Sprite>("Levels"); // Create an array of all the sprites that are inside the Resores>Levels Folder
 		foreach(Sprite thumbnail in thumbnails) //For every sprite in this "thumbnails" array...
 		{
@@ -79,15 +80,40 @@ public class MainMenu : MonoBehaviour
 			container.transform.GetChild(2).GetChild(0).GetComponent<Text>().enabled = nextLevelLocked; // Have the LockedOverlays childs text componant enabled/disabled depending on wether nextLevellocked is true or false.
 			container.GetComponent<Button>().interactable = !nextLevelLocked; // Make the ButtonPanel interactable/not interactable depending on wether nextLevelLocked is true or false.
 
+			
+			GameObject starOne = container.transform.GetChild(1).GetChild(0).GetChild(0).gameObject;
+			GameObject starTwo = container.transform.GetChild(1).GetChild(0).GetChild(1).gameObject;
+			GameObject starThree = container.transform.GetChild(1).GetChild(0).GetChild(2).gameObject;
+			
+
 			if (level.BestTime == 0.0f) // if we have not completed this level
 			{
 				nextLevelLocked = true;
+			}
+			else if (level.BestTime < level.GoldTime) // if the best time is less than the gold time (If we have completed the level withing the gold time)
+			{
+				//Enable 3 stars
+				starOne.GetComponent<Image>().enabled = true;
+				starTwo.GetComponent<Image>().enabled = true;
+				starThree.GetComponent<Image>().enabled = true;
+			}
+			else if (level.BestTime < level.SilverTime) // if the best time is less than the silver time (If we have completed the level only within the silver time)
+			{
+				// Enable 2 stars
+				starOne.GetComponent<Image>().enabled = true;
+				starTwo.GetComponent<Image>().enabled = true;
+			}
+			else // if we have completed the level in anyother amout of time
+			{
+				// enable 1 star.
+				starOne.GetComponent<Image>().enabled = true;
 			}
 
 			string sceneName = thumbnail.name;
 			container.GetComponent<Button>().onClick.AddListener(() => LoadLevel(sceneName));
 		}
 
+		// ---- Shop Stuff
 		int textureIndex = 0;
 		Sprite[] textures = Resources.LoadAll<Sprite>("Player"); // Create an arroy of all textures inside the Resorces>Player folder.
 		foreach(Sprite texture in textures)

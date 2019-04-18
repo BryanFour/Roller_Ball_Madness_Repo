@@ -825,6 +825,16 @@ PrefabInstance:
       propertyPath: endTimerText
       value: 
       objectReference: {fileID: 6890993730333016804}
+    - target: {fileID: 5050675495306483763, guid: 4fe91c3f904403f4bb73e94bf9667d16,
+        type: 3}
+      propertyPath: silverTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050675495306483763, guid: 4fe91c3f904403f4bb73e94bf9667d16,
+        type: 3}
+      propertyPath: goldTime
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5050675495306483762, guid: 4fe91c3f904403f4bb73e94bf9667d16,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -892,7 +902,7 @@ PrefabInstance:
     - target: {fileID: 6274620201875343109, guid: d71b5b6fd698eb94c80e6cb4b5cc53b5,
         type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: GamePlayUI
       objectReference: {fileID: 0}
     - target: {fileID: 6274620201875343113, guid: d71b5b6fd698eb94c80e6cb4b5cc53b5,
         type: 3}
