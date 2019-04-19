@@ -179,7 +179,7 @@ public class MainMenu : MonoBehaviour
 				y = 0f;
 			}
 			
-			// Change the players skin to the selected material. --------- Try moving all this to the GameManager script.
+			// Change the players skin to the selected material.										--------- Try moving all this to the GameManager script, Dont forget this duplicate code in the PlayerController script
 			Renderer playerRenderer = playerPrefab.GetComponent<Renderer>();	// Get access to the Renderer Component on the player.
 			playerRenderer.sharedMaterial = playerMatArray[skinIndex];		// Set the players skin to the material in the material array at the GameManagers currentSkinIndex number.
 
