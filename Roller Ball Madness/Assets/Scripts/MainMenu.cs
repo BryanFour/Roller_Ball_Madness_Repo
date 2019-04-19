@@ -46,12 +46,9 @@ public class MainMenu : MonoBehaviour
 	public GameObject shopButtonContainer;
 	public Text currencyText;
 
-	public Material playerMaterial;
-	
 	// My Changes
 	public Material[] playerMatArray;
 	public GameObject playerPrefab;
-	//public Renderer playerRenderer;
 	// My Changes End.
 
 	private Transform cameraTransform;
@@ -161,9 +158,8 @@ public class MainMenu : MonoBehaviour
 	// i changed to puiblic
 	public void ChangePlayerSkin(int index)
 	{
-		if ((GameManager.Instance.skinAvailability & 1 << index) == 1 << index)
+		if ((GameManager.Instance.skinAvailability & 1 << index) == 1 << index)	// If the skin is available to us.
 		{
-			float x = (index % 4) * .25f;
 			float y = ((int)index / 4) * .25f;
 
 			if (y == .0f)
@@ -182,31 +178,26 @@ public class MainMenu : MonoBehaviour
 			{
 				y = 0f;
 			}
-
-			//playerMaterial.SetTextureOffset("_MainTex", new Vector2(x, y)); // Un comment if this dosnt work
 			
-			//My Changes.
-			//playerMaterial = playerMatArray[index]; // Mayb not needed
-			Renderer playerRenderer = playerPrefab.GetComponent<Renderer>();
-			playerRenderer.sharedMaterial = playerMatArray[index];
-			//My Changes End.
+			// Change the players skin to the selected material. --------- Try moving all this to the GameManager script.
+			Renderer playerRenderer = playerPrefab.GetComponent<Renderer>();	// Get access to the Renderer Component on the player.
+			playerRenderer.sharedMaterial = playerMatArray[index];		// Set the players skin to the material in the material array at the GameManagers currentSkinIndex number.
 
 			GameManager.Instance.currentSkinIndex = index;
 			GameManager.Instance.Save();
 		}
-		else
+		else   // If we do not own the skin attempt to buy it.
 		{
-			//You do not have the skin doyou want to buy it?
-			int cost = costs[index];
+			int cost = costs[index]; // The "cost" is equal to the cost set in the costs array at the top of this script.
 
-			if (GameManager.Instance.currency >= cost)
+			if (GameManager.Instance.currency >= cost)	// If our current currency is equal to or more than the cost...
 			{
-				GameManager.Instance.currency -= cost;
-				GameManager.Instance.skinAvailability += 1 << index;
-				GameManager.Instance.Save();
-				currencyText.text = "Currency : " + GameManager.Instance.currency.ToString();
-				shopButtonContainer.transform.GetChild(index).GetChild(0).gameObject.SetActive(false);
-				ChangePlayerSkin(index);
+				GameManager.Instance.currency -= cost; // Subtract the cost from the players currency...
+				GameManager.Instance.skinAvailability += 1 << index;	// Make the skin available...
+				GameManager.Instance.Save();	// Save everything to the PlayerPrefs.
+				currencyText.text = "Currency : " + GameManager.Instance.currency.ToString();	// Update the currency displayed ingame to our current currency.
+				shopButtonContainer.transform.GetChild(index).GetChild(0).gameObject.SetActive(false);	// Disable the price tag graphic.
+				ChangePlayerSkin(index);	// Return to the begining of this method;
 			}
 		}
 	}

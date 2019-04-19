@@ -193,7 +193,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 7.96e-43, y: 4e-45, z: 2.3036798e-36, w: 7.586951}
+  m_BoundingSphereOverride: {x: NaN, y: 0, z: 0, w: 2.0627e-41}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -388,7 +388,6 @@ MonoBehaviour:
     type: 3}
   shopButtonContainer: {fileID: 1774089962}
   currencyText: {fileID: 1136316650}
-  playerMaterial: {fileID: 2100000, guid: bee90c0df320eaf49a58a2d4eddc0f7c, type: 2}
   playerMatArray:
   - {fileID: 2100000, guid: 37db27cd90bcb064daf2429fa42e022f, type: 2}
   - {fileID: 2100000, guid: a792762246421814b9b893a7e580ea87, type: 2}
@@ -669,6 +668,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142268916272877209, guid: 57d7552fef897254291bd9e6b01d7a2f,
+        type: 3}
+      propertyPath: playerPrefab
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57d7552fef897254291bd9e6b01d7a2f, type: 3}

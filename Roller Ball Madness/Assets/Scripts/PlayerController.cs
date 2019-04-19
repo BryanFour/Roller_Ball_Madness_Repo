@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 	public VirtualJoystick moveJoystick;
 
 	//Boost Stuff
-	public float boostSpeed = 5f;
+	private float boostSpeed = 20f;
 	public float boostCooldown = 2f;
 	private float lastBoost;
 
@@ -31,16 +31,11 @@ public class PlayerController : MonoBehaviour
 
 	private void Start()
 	{
-		//fasga
 		int index = GameManager.Instance.currentSkinIndex;
 
-		//My Changes.
-		//playerMaterial = playerMatArray[index]; // Mayb not needed
-		Renderer playerRenderer = playerPrefab.GetComponent<Renderer>();
-		playerRenderer.sharedMaterial = playerMatArray[index];
-		//My Changes End.
-
-		// asfa
+		// Change the players skin to the selected material. --------- Try moving all this to the GameManager script.
+		Renderer playerRenderer = playerPrefab.GetComponent<Renderer>();    // Get access to the Renderer Component on the player.
+		playerRenderer.sharedMaterial = playerMatArray[index];      // Set the players skin to the material in the material array at the GameManagers currentSkinIndex number.
 
 		lastBoost = Time.time - boostCooldown; // Enables the boost as soon as the game starts, otherwise the game would start with the boost cooldown in effect.
 		startTime = Time.time;
