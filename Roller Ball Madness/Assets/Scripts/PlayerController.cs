@@ -23,8 +23,25 @@ public class PlayerController : MonoBehaviour
 
 	private float startTime;
 
+	// My Changes
+	public Material[] playerMatArray;
+	public GameObject playerPrefab;
+	//public Renderer playerRenderer;
+	// My Changes End.
+
 	private void Start()
 	{
+		//fasga
+		int index = GameManager.Instance.currentSkinIndex;
+
+		//My Changes.
+		//playerMaterial = playerMatArray[index]; // Mayb not needed
+		Renderer playerRenderer = playerPrefab.GetComponent<Renderer>();
+		playerRenderer.sharedMaterial = playerMatArray[index];
+		//My Changes End.
+
+		// asfa
+
 		lastBoost = Time.time - boostCooldown; // Enables the boost as soon as the game starts, otherwise the game would start with the boost cooldown in effect.
 		startTime = Time.time;
 

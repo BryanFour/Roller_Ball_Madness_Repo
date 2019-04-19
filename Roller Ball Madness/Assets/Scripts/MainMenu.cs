@@ -47,6 +47,12 @@ public class MainMenu : MonoBehaviour
 	public Text currencyText;
 
 	public Material playerMaterial;
+	
+	// My Changes
+	public Material[] playerMatArray;
+	public GameObject playerPrefab;
+	//public Renderer playerRenderer;
+	// My Changes End.
 
 	private Transform cameraTransform;
 	private Transform cameraDesiredLookAt;
@@ -58,6 +64,7 @@ public class MainMenu : MonoBehaviour
 
 	private void Start()
 	{
+
 		ChangePlayerSkin(GameManager.Instance.currentSkinIndex);
 		currencyText.text = "Currency : " + GameManager.Instance.currency.ToString();
 		cameraTransform = Camera.main.transform;
@@ -151,7 +158,8 @@ public class MainMenu : MonoBehaviour
 		cameraDesiredLookAt = menuTransform;
 	}
 
-	private void ChangePlayerSkin(int index)
+	// i changed to puiblic
+	public void ChangePlayerSkin(int index)
 	{
 		if ((GameManager.Instance.skinAvailability & 1 << index) == 1 << index)
 		{
@@ -175,7 +183,14 @@ public class MainMenu : MonoBehaviour
 				y = 0f;
 			}
 
-			playerMaterial.SetTextureOffset("_MainTex", new Vector2(x, y));
+			//playerMaterial.SetTextureOffset("_MainTex", new Vector2(x, y)); // Un comment if this dosnt work
+			
+			//My Changes.
+			//playerMaterial = playerMatArray[index]; // Mayb not needed
+			Renderer playerRenderer = playerPrefab.GetComponent<Renderer>();
+			playerRenderer.sharedMaterial = playerMatArray[index];
+			//My Changes End.
+
 			GameManager.Instance.currentSkinIndex = index;
 			GameManager.Instance.Save();
 		}

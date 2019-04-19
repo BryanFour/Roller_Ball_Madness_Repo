@@ -193,7 +193,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 7.96e-43, y: 4e-45, z: 2.3036798e-36, w: 7.586951}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSkinIndex: 0
-  currency: 1000
+  currency: 10000
   skinAvailability: 1
 --- !u!4 &807617795
 Transform:
@@ -346,6 +346,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &855216392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2772204330175592897, guid: 57d7552fef897254291bd9e6b01d7a2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1633472350}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1134028040
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,6 +389,24 @@ MonoBehaviour:
   shopButtonContainer: {fileID: 1774089962}
   currencyText: {fileID: 1136316650}
   playerMaterial: {fileID: 2100000, guid: bee90c0df320eaf49a58a2d4eddc0f7c, type: 2}
+  playerMatArray:
+  - {fileID: 2100000, guid: 37db27cd90bcb064daf2429fa42e022f, type: 2}
+  - {fileID: 2100000, guid: a792762246421814b9b893a7e580ea87, type: 2}
+  - {fileID: 2100000, guid: 5cc7ebbd2acd2764e88237b9e362dd82, type: 2}
+  - {fileID: 2100000, guid: 5b8c01216e1b54c4eb59ab00cf82bd05, type: 2}
+  - {fileID: 2100000, guid: 35fc0bb8c874eba48b22f60d878ffbe4, type: 2}
+  - {fileID: 2100000, guid: 1b1a016856447204289da1fec2ee17e7, type: 2}
+  - {fileID: 2100000, guid: c195b1b9ae19d064082c33a22dc5a0f6, type: 2}
+  - {fileID: 2100000, guid: 3fc3bbc4a9839d24eb455f5e511a1c39, type: 2}
+  - {fileID: 2100000, guid: c9aa9ee84721eb7408ff140756a7d217, type: 2}
+  - {fileID: 2100000, guid: 4bb12e2031b9add4ab7d29bb4095eadd, type: 2}
+  - {fileID: 2100000, guid: 2a70eeb1a8730dc4f8aef008265c64be, type: 2}
+  - {fileID: 2100000, guid: bdadbd86e36176342bd968015867f5e5, type: 2}
+  - {fileID: 2100000, guid: f856ed6436664034383d5fa42b86b206, type: 2}
+  - {fileID: 2100000, guid: 098a0d407d71528439bf8743ef556286, type: 2}
+  - {fileID: 2100000, guid: 8e16e27f5d5118041b14897f71fa1532, type: 2}
+  - {fileID: 2100000, guid: fab3fe7f6e5a1ca449b9907c17526fdc, type: 2}
+  playerPrefab: {fileID: 855216392}
 --- !u!4 &1134028042
 Transform:
   m_ObjectHideFlags: 0
