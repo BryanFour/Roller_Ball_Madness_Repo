@@ -126,10 +126,10 @@ public class MainMenu : MonoBehaviour
 			container.GetComponent<Image>().sprite = texture; // Change background image for the thumbnail
 			container.transform.SetParent(shopButtonContainer.transform, false); //Set the prefabs parent to shopButtonContainer. // The "false" tells the prefab not to use its own position but instead use the parents position.
 
-			int index = textureIndex;
-			container.GetComponent<Button>().onClick.AddListener(() => ChangePlayerSkin(index));
-			container.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = costs[index].ToString(); // Get the skin price text component and change it to the cost set in the costs[] array.
-			if ((GameManager.Instance.skinAvailability & 1 << index) == 1 << index)
+			int texIndex = textureIndex;
+			container.GetComponent<Button>().onClick.AddListener(() => ChangePlayerSkin(texIndex));
+			container.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = costs[texIndex].ToString(); // Get the skin price text component and change it to the cost set in the costs[] array.
+			if ((GameManager.Instance.skinAvailability & 1 << texIndex) == 1 << texIndex)
 			{
 				container.transform.GetChild(0).gameObject.SetActive(false);
 			}
@@ -156,11 +156,11 @@ public class MainMenu : MonoBehaviour
 	}
 
 	// i changed to puiblic
-	public void ChangePlayerSkin(int index)
+	public void ChangePlayerSkin(int skinIndex)
 	{
-		if ((GameManager.Instance.skinAvailability & 1 << index) == 1 << index)	// If the skin is available to us.
+		if ((GameManager.Instance.skinAvailability & 1 << skinIndex) == 1 << skinIndex)	// If the skin is available to us.
 		{
-			float y = ((int)index / 4) * .25f;
+			float y = ((int)skinIndex / 4) * .25f;
 
 			if (y == .0f)
 			{
@@ -181,23 +181,23 @@ public class MainMenu : MonoBehaviour
 			
 			// Change the players skin to the selected material. --------- Try moving all this to the GameManager script.
 			Renderer playerRenderer = playerPrefab.GetComponent<Renderer>();	// Get access to the Renderer Component on the player.
-			playerRenderer.sharedMaterial = playerMatArray[index];		// Set the players skin to the material in the material array at the GameManagers currentSkinIndex number.
+			playerRenderer.sharedMaterial = playerMatArray[skinIndex];		// Set the players skin to the material in the material array at the GameManagers currentSkinIndex number.
 
-			GameManager.Instance.currentSkinIndex = index;
+			GameManager.Instance.currentSkinIndex = skinIndex;
 			GameManager.Instance.Save();
 		}
 		else   // If we do not own the skin attempt to buy it.
 		{
-			int cost = costs[index]; // The "cost" is equal to the cost set in the costs array at the top of this script.
+			int cost = costs[skinIndex]; // The "cost" is equal to the cost set in the costs array at the top of this script.
 
 			if (GameManager.Instance.currency >= cost)	// If our current currency is equal to or more than the cost...
 			{
 				GameManager.Instance.currency -= cost; // Subtract the cost from the players currency...
-				GameManager.Instance.skinAvailability += 1 << index;	// Make the skin available...
+				GameManager.Instance.skinAvailability += 1 << skinIndex;	// Make the skin available...
 				GameManager.Instance.Save();	// Save everything to the PlayerPrefs.
 				currencyText.text = "Currency : " + GameManager.Instance.currency.ToString();	// Update the currency displayed ingame to our current currency.
-				shopButtonContainer.transform.GetChild(index).GetChild(0).gameObject.SetActive(false);	// Disable the price tag graphic.
-				ChangePlayerSkin(index);	// Return to the begining of this method;
+				shopButtonContainer.transform.GetChild(skinIndex).GetChild(0).gameObject.SetActive(false);	// Disable the price tag graphic.
+				ChangePlayerSkin(skinIndex);	// Return to the begining of this method;
 			}
 		}
 	}

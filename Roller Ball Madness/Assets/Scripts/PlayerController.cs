@@ -23,19 +23,16 @@ public class PlayerController : MonoBehaviour
 
 	private float startTime;
 
-	// My Changes
 	public Material[] playerMatArray;
 	public GameObject playerPrefab;
-	//public Renderer playerRenderer;
-	// My Changes End.
 
 	private void Start()
 	{
-		int index = GameManager.Instance.currentSkinIndex;
+		int skinIndex = GameManager.Instance.currentSkinIndex;
 
 		// Change the players skin to the selected material. --------- Try moving all this to the GameManager script.
 		Renderer playerRenderer = playerPrefab.GetComponent<Renderer>();    // Get access to the Renderer Component on the player.
-		playerRenderer.sharedMaterial = playerMatArray[index];      // Set the players skin to the material in the material array at the GameManagers currentSkinIndex number.
+		playerRenderer.sharedMaterial = playerMatArray[skinIndex];      // Set the players skin to the material in the material array at the GameManagers currentSkinIndex number.
 
 		lastBoost = Time.time - boostCooldown; // Enables the boost as soon as the game starts, otherwise the game would start with the boost cooldown in effect.
 		startTime = Time.time;
