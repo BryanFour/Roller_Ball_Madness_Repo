@@ -1,0 +1,5 @@
+sceneSetups:
+- path: Assets/KTK_Effect_Samples/Scenes/Effect_Asset_Set_Sample1.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0

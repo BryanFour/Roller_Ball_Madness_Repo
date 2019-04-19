@@ -62,13 +62,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Dungeon Pack\Scripts\ChestDemo.cs" />
-    <Compile Include="Assets\Dungeon Pack\Scripts\MaterialMover.cs" />
-    <Compile Include="Assets\Dungeon Pack\Scripts\Rotator.cs" />
-    <Compile Include="Assets\Dungeon Pack\Scripts\SpikeTrapDemo.cs" />
-    <Compile Include="Assets\Dungeon Pack\Scripts\TrapDoorDemo.cs" />
-    <Compile Include="Assets\GE Common Assets\GE Toggle Full Screen\Scripts\GE_ToggleFullScreenUI.cs" />
-    <Compile Include="Assets\GE Common Assets\Scripts\GE_UIResponder.cs" />
     <Compile Include="Assets\Notes.cs" />
     <Compile Include="Assets\Resources\Player\TextureGuide.cs" />
     <Compile Include="Assets\Scripts\ClampRectTransform.cs" />
@@ -83,12 +76,20 @@
     <Compile Include="Assets\Scripts\VirtualJoystick.cs" />
     <Compile Include="Assets\Scripts\WinScript.cs" />
     <None Include="Assets\UI\UI Pack\README.txt" />
-    <None Include="Assets\GE Common Assets\Readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Editor">
       <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProGrids">
+      <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
+      <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProGrids.Editor">
+      <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -113,6 +114,9 @@
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AddOns.Editor">
+      <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/The Beast/Documents/Unity/Unity Projects/Roller_Ball_Madness_Repo/Roller Ball Madness/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
