@@ -483,6 +483,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakableWall
       objectReference: {fileID: 0}
+    - target: {fileID: 2559163888934627452, guid: 9b5efa9f028313c478f03a2cd0202fff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2559163888934627448, guid: 9b5efa9f028313c478f03a2cd0202fff,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -708,6 +713,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 109711157}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1706748142 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5003163857814407340, guid: 7aafd094ee4dc7143888b76fa3787eb0,
+    type: 3}
+  m_PrefabInstance: {fileID: 5003163858159324829}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1776973428 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6274620201875343109, guid: d71b5b6fd698eb94c80e6cb4b5cc53b5,
@@ -888,6 +899,26 @@ PrefabInstance:
       propertyPath: sensitivityY
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 5003163857814407339, guid: 7aafd094ee4dc7143888b76fa3787eb0,
+        type: 3}
+      propertyPath: castFrom
+      value: 
+      objectReference: {fileID: 109711159}
+    - target: {fileID: 5003163857814407339, guid: 7aafd094ee4dc7143888b76fa3787eb0,
+        type: 3}
+      propertyPath: castTo
+      value: 
+      objectReference: {fileID: 1706748142}
+    - target: {fileID: 5003163857814407339, guid: 7aafd094ee4dc7143888b76fa3787eb0,
+        type: 3}
+      propertyPath: camOffsetOffset
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5003163857814407339, guid: 7aafd094ee4dc7143888b76fa3787eb0,
+        type: 3}
+      propertyPath: thePlayer
+      value: 
+      objectReference: {fileID: 1508332450}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7aafd094ee4dc7143888b76fa3787eb0, type: 3}
 --- !u!1001 &5050675494518446805

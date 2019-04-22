@@ -1061,6 +1061,16 @@ PrefabInstance:
       propertyPath: sensitivityY
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 5003163857814407339, guid: 7aafd094ee4dc7143888b76fa3787eb0,
+        type: 3}
+      propertyPath: castFrom
+      value: 
+      objectReference: {fileID: 1307015639}
+    - target: {fileID: 5003163857814407339, guid: 7aafd094ee4dc7143888b76fa3787eb0,
+        type: 3}
+      propertyPath: castTo
+      value: 
+      objectReference: {fileID: 1342473178}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7aafd094ee4dc7143888b76fa3787eb0, type: 3}
 --- !u!1 &1272207895 stripped
@@ -1269,6 +1279,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4112c19c381d5d548afb89bbbf47e26c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1342473178 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5003163857814407340, guid: 7aafd094ee4dc7143888b76fa3787eb0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1229745900}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1503227931 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 977675818, guid: d71b5b6fd698eb94c80e6cb4b5cc53b5,
