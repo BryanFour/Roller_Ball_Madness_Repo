@@ -72,7 +72,7 @@ public class FreeCamera : MonoBehaviour
 
 		// Raycast Stuff.
 		// Bit shift the index of the layer (9) to get a bit mask
-		// This will cast rays only against colliders in layer 9.
+		// This will cast rays only against colliders in layer 9. ------ Dont forget to set NonClippable objects to the NonClippable layer.
 		int layerMask = 1 << 9;
 		RaycastHit hit;
 		// If the ray intersects any objects in layer 9...

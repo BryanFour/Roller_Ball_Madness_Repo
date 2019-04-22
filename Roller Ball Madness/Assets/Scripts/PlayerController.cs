@@ -17,6 +17,10 @@ public class PlayerController : MonoBehaviour
 	private float boostSpeed = 20f;
 	public float boostCooldown = 2f;
 	private float lastBoost;
+	//Jump Stuff
+	private float jumpForce = 10f;
+	public float jumpCooldown = 2f;
+	private float lastJump;
 
 	private Rigidbody controller;
 	private Transform camTransform;
@@ -34,7 +38,7 @@ public class PlayerController : MonoBehaviour
 		Renderer playerRenderer = playerPrefab.GetComponent<Renderer>();    // Get access to the Renderer Component on the player.
 		playerRenderer.sharedMaterial = playerMatArray[skinIndex];      // Set the players skin to the material in the material array at the GameManagers currentSkinIndex number.
 
-		lastBoost = Time.time - boostCooldown; // Enables the boost as soon as the game starts, otherwise the game would start with the boost cooldown in effect.
+		//lastBoost = Time.time - boostCooldown; // Enables the boost as soon as the game starts, otherwise the game would start with the boost cooldown in effect. ---- Dosnt seem to be needed.
 		startTime = Time.time;
 
 		controller = GetComponent<Rigidbody>();
@@ -84,7 +88,22 @@ public class PlayerController : MonoBehaviour
 		if (Time.time - lastBoost > boostCooldown)
 		{
 			lastBoost = Time.time;
-			controller.AddForce(controller.velocity.normalized * boostSpeed, ForceMode.VelocityChange);
+			controller.AddForce(camTransform.forward * boostSpeed, ForceMode.VelocityChange);	// Add force in the direction the camera is facing.
+			//controller.AddForce(controller.velocity.normalized * boostSpeed, ForceMode.VelocityChange); // Adds force in the direction that the ball is moving.
+		}
+	}
+
+	public void Jump()
+	{
+		if (Time.time - startTime < TIME_BEFORE_START)
+		{
+			return;
+		}
+
+		if (Time.time - lastJump > jumpCooldown)
+		{
+			lastJump = Time.time;
+			controller.AddForce(camTransform.up * jumpForce, ForceMode.VelocityChange);   // Add force in the up direction relative to the camera.																						
 		}
 	}
 }
