@@ -44,10 +44,13 @@ public class LevelManager : MonoBehaviour
 
 	private void Update()
 	{
+		/*
+		// Kill the player if their position on the Y-axis is less than -10;
 		if (player.transform.position.y < -10)
 		{
 			Death();
 		}
+		*/
 
 		if (Time.time - startTime < TIME_BEFORE_START)
 		{
