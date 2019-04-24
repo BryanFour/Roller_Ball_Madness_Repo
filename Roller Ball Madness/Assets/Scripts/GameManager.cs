@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 // Video 1 - https://www.youtube.com/watch?v=cQHF4_YPvsM&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=7 
+// Video 2 - Brackys encrypted Save/Load method - https://www.youtube.com/watch?v=XOjd_qU2Ido
 
 public class GameManager : MonoBehaviour
 {
