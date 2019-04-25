@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-	private const float TIME_BEFORE_START = 3.0f;
+	private const float TIME_BEFORE_START = 3.0f; // Any changes to this value also have to be changed in the LevelManager script.
 
 	public float moveSpeed = 5.0f;
 	public float drag = .5f;
@@ -19,10 +19,13 @@ public class PlayerController : MonoBehaviour
 	private float lastBoost;
 	//Jump Stuff
 	private float jumpForce = 10f;
-	public float jumpCooldown = 2f;
+	private float jumpCooldown = 2f;
 	private float lastJump;
+	private bool canJump = true;
+	// Moving Obsticle Collision Stuff
+	public float colForce = 5;
 
-	private Rigidbody controller;
+	private Rigidbody rigidB;
 	private Transform camTransform;
 
 	private float startTime;
@@ -41,14 +44,28 @@ public class PlayerController : MonoBehaviour
 		//lastBoost = Time.time - boostCooldown; // Enables the boost as soon as the game starts, otherwise the game would start with the boost cooldown in effect. ---- Dosnt seem to be needed.
 		startTime = Time.time;
 
-		controller = GetComponent<Rigidbody>();
-		controller.maxAngularVelocity = terminalRotationSpeed;
-		controller.drag = drag;
+		rigidB = GetComponent<Rigidbody>();
+		rigidB.maxAngularVelocity = terminalRotationSpeed;
+		rigidB.drag = drag;
 
 		camTransform = Camera.main.transform;
 	}
 
 	private void Update()
+	{
+		// Debuging Controlls
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			Jump();
+		}
+		if (Input.GetKeyDown(KeyCode.LeftShift))
+		{
+			Boost();
+		}
+		// Debuging Controlls end.
+	}
+
+	private void FixedUpdate()
 	{
 		if (Time.time - startTime < TIME_BEFORE_START)
 		{
@@ -75,7 +92,7 @@ public class PlayerController : MonoBehaviour
 		rotatedDir = new Vector3(rotatedDir.x, 0, rotatedDir.z);
 		rotatedDir = rotatedDir.normalized * dir.magnitude;
 
-		controller.AddForce(rotatedDir * moveSpeed);
+		rigidB.AddForce(rotatedDir * moveSpeed);
 	}
 
 	public void Boost()
@@ -88,8 +105,9 @@ public class PlayerController : MonoBehaviour
 		if (Time.time - lastBoost > boostCooldown)
 		{
 			lastBoost = Time.time;
-			controller.AddForce(camTransform.forward * boostSpeed, ForceMode.VelocityChange);	// Add force in the direction the camera is facing.
-			//controller.AddForce(controller.velocity.normalized * boostSpeed, ForceMode.VelocityChange); // Adds force in the direction that the ball is moving.
+			rigidB.AddForce(moveJoystick.InputDirection * boostSpeed, ForceMode.VelocityChange);        // Adds force in the direction of the move joystick.
+			//rigidB.AddForce(camTransform.forward * boostSpeed, ForceMode.VelocityChange);				// Add force in the direction the camera is facing.
+			//rigidB.AddForce(controller.velocity.normalized * boostSpeed, ForceMode.VelocityChange);	// Adds force in the direction that the ball is moving.
 		}
 	}
 
@@ -100,10 +118,37 @@ public class PlayerController : MonoBehaviour
 			return;
 		}
 
-		if (Time.time - lastJump > jumpCooldown)
+		if (Time.time - lastJump > jumpCooldown || (canJump == true))	// If current point in time minus the time it was when we last jumped is greater than the boost cooldown value
+		{																// or if the canJump bool is set to true...
+			lastJump = Time.time;	// Set the value of last jump to the current point in time
+			rigidB.AddForce(camTransform.up * jumpForce, ForceMode.VelocityChange);   // Add force in the up direction relative to the camera.	
+			canJump = false;	// Set the canJump bool to false.
+		}
+	}
+
+	private void OnCollisionEnter(Collision col)
+	{
+		// Ground Collisions
+		if (col.gameObject.tag == "Ground") // If we collide with the ground --Dont forget to tag all ground objects with the "Ground" tag.
 		{
-			lastJump = Time.time;
-			controller.AddForce(camTransform.up * jumpForce, ForceMode.VelocityChange);   // Add force in the up direction relative to the camera.																						
+			canJump = true; // Set the canjump bool to true.
+		}
+		// Ground Collisions end.
+
+		// Moving Obsticle Collisions.
+		// force is how forcefully we will push the player away from the enemy.
+		// If the object we hit is the enemy
+		if (col.gameObject.tag == "Moving Obsticle")
+		{
+			// Calculate Angle Between the collision point and the player
+			Vector3 dir = col.contacts[0].point - transform.position;
+			// We then get the opposite (-Vector3) and normalize it
+			dir = -dir.normalized;
+			// And finally we add force in the direction of dir and multiply it by force. 
+			// This will push back the player
+			rigidB.AddForce(dir * colForce, ForceMode.VelocityChange);
+			Debug.Log("Player pushed back");
+			// Moving Obsticle Collisions end.
 		}
 	}
 }

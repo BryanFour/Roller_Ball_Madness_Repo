@@ -14,7 +14,7 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-	private const float TIME_BEFORE_START = 3.0f;
+	private const float TIME_BEFORE_START = 3.0f;   // Any changes to this value also have to be changed in the PlayerController script.
 
 	private static LevelManager instance;
 	public static LevelManager Instance { get { return instance; } }
@@ -44,13 +44,13 @@ public class LevelManager : MonoBehaviour
 
 	private void Update()
 	{
-		/*
+		
 		// Kill the player if their position on the Y-axis is less than -10;
 		if (player.transform.position.y < -10)
 		{
 			Death();
 		}
-		*/
+		
 
 		if (Time.time - startTime < TIME_BEFORE_START)
 		{
