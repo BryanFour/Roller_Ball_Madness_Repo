@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 5372479877459266984}
   - component: {fileID: 1044333154350639893}
   m_Layer: 0
-  m_Name: Platform_4x6
-  m_TagString: Untagged
+  m_Name: Platform_6x6
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -206,55 +206,55 @@ MonoBehaviour:
   - m_Vertices: 0b0000000e00000012000000
   m_SharedTextures: []
   m_Positions:
-  - {x: -3, y: -0.5, z: 2}
-  - {x: 3, y: -0.5, z: 2}
-  - {x: -3, y: 0.5, z: 2}
-  - {x: 3, y: 0.5, z: 2}
-  - {x: 3, y: -0.5, z: 2}
+  - {x: -3, y: -0.5, z: 4}
+  - {x: 3, y: -0.5, z: 4}
+  - {x: -3, y: 0.5, z: 4}
+  - {x: 3, y: 0.5, z: 4}
+  - {x: 3, y: -0.5, z: 4}
   - {x: 3, y: -0.5, z: -2}
-  - {x: 3, y: 0.5, z: 2}
+  - {x: 3, y: 0.5, z: 4}
   - {x: 3, y: 0.5, z: -2}
   - {x: 3, y: -0.5, z: -2}
   - {x: -3, y: -0.5, z: -2}
   - {x: 3, y: 0.5, z: -2}
   - {x: -3, y: 0.5, z: -2}
   - {x: -3, y: -0.5, z: -2}
-  - {x: -3, y: -0.5, z: 2}
+  - {x: -3, y: -0.5, z: 4}
   - {x: -3, y: 0.5, z: -2}
-  - {x: -3, y: 0.5, z: 2}
-  - {x: -3, y: 0.5, z: 2}
-  - {x: 3, y: 0.5, z: 2}
+  - {x: -3, y: 0.5, z: 4}
+  - {x: -3, y: 0.5, z: 4}
+  - {x: 3, y: 0.5, z: 4}
   - {x: -3, y: 0.5, z: -2}
   - {x: 3, y: 0.5, z: -2}
   - {x: -3, y: -0.5, z: -2}
   - {x: 3, y: -0.5, z: -2}
-  - {x: -3, y: -0.5, z: 2}
-  - {x: 3, y: -0.5, z: 2}
+  - {x: -3, y: -0.5, z: 4}
+  - {x: 3, y: -0.5, z: 4}
   m_Textures0:
   - {x: 3, y: -0.5}
   - {x: -3, y: -0.5}
   - {x: 3, y: 0.5}
   - {x: -3, y: 0.5}
-  - {x: 2, y: -0.5}
+  - {x: 4, y: -0.5}
   - {x: -2, y: -0.5}
-  - {x: 2, y: 0.5}
+  - {x: 4, y: 0.5}
   - {x: -2, y: 0.5}
   - {x: 3, y: -0.5}
   - {x: -3, y: -0.5}
   - {x: 3, y: 0.5}
   - {x: -3, y: 0.5}
   - {x: 2, y: -0.5}
-  - {x: -2, y: -0.5}
+  - {x: -4, y: -0.5}
   - {x: 2, y: 0.5}
-  - {x: -2, y: 0.5}
-  - {x: -3, y: 2}
-  - {x: 3, y: 2}
+  - {x: -4, y: 0.5}
+  - {x: -3, y: 4}
+  - {x: 3, y: 4}
   - {x: -3, y: -2}
   - {x: 3, y: -2}
   - {x: 3, y: -2}
   - {x: -3, y: -2}
-  - {x: 3, y: 2}
-  - {x: -3, y: 2}
+  - {x: 3, y: 4}
+  - {x: -3, y: 4}
   m_Textures2: []
   m_Textures3: []
   m_Tangents:
@@ -291,17 +291,9 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_IsSelectable: 1
-  m_SelectedFaces: 00000000
-  m_SelectedEdges:
-  - a: 0
-    b: 1
-  - a: 2
-    b: 0
-  - a: 1
-    b: 3
-  - a: 3
-    b: 2
-  m_SelectedVertices: 00000000010000000200000003000000
+  m_SelectedFaces: 
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!64 &1044333154350639893
 MeshCollider:
   m_ObjectHideFlags: 0
