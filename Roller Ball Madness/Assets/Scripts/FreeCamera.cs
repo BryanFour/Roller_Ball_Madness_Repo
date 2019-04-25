@@ -12,7 +12,10 @@ public class FreeCamera : MonoBehaviour
 	public VirtualJoystick cameraJoystick;
 
 	private const float Y_ANGLE_MIN = 8f;
-	private const float Y_ANGLE_MAX = 25f;
+	private const float Y_ANGLE_MAX = 20f;
+	// Cameras left and right min/max values.
+	private const float X_ANGLE_MIN = -15f;
+	private const float X_ANGLE_MAX = 15f;
 
 	public Transform thePlayer; // what the camera looks at
 	public Transform camTransform; 
@@ -30,8 +33,8 @@ public class FreeCamera : MonoBehaviour
 	[Range(0, 5)]
 	[SerializeField] private float sensitivityY = 1f;
 
-	private float currentX = 0f;
-	private float currentY = 0f;
+	private float currentX = 0f;    // The X angle the camera starts at.
+	private float currentY = 14f;	// The Y angle the camera starts at.
 
 	private float startTime = 0f;
 	private const float TIME_BEFORE_START = 2.5f;
@@ -58,8 +61,10 @@ public class FreeCamera : MonoBehaviour
 		currentX += cameraJoystick.InputDirection.x * sensitivityX;
 		currentY += cameraJoystick.InputDirection.z * sensitivityY;
 
-		//	Clamp the cameras Y-axis value to a min and max, so the player cant move the camera to00 high or low.
+		//	Clamp the cameras Y-axis value to a min and max, so the player cant move the camera too high or low.
 		currentY = Mathf.Clamp(currentY, Y_ANGLE_MIN, Y_ANGLE_MAX);
+		// Clamp the cameras X-axis value to a min and max, so the player cant move the camera too far left and right.
+		currentX = Mathf.Clamp(currentX, X_ANGLE_MIN, X_ANGLE_MAX);
 	}
 
 	private void LateUpdate()
