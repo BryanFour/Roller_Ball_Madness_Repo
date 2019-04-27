@@ -26,6 +26,11 @@ public class LevelManager : MonoBehaviour
 	public Text endTimerText; // The time text that is on the win/level end panel 
 	public GameObject gameplayUICanvas;
 	private GameObject player;
+	//	Coin Count Stuff.
+	public GameObject levelPrefab; //	The Level prefab, needed to to get the child.count of coins.
+	private int initialCoinCount = 0;
+	public Text coinsCollectedText;
+	//	Coin Count Stuff End.
 
 	private float startTime;
 	private float levelDuration; // how long we have been playing the level for.
@@ -40,11 +45,18 @@ public class LevelManager : MonoBehaviour
 		startTime = Time.time;
 		player = GameObject.FindGameObjectWithTag("Player");
 		player.transform.position = respawnPoint.position;
+		// Coin Stuff.-----------------------------------------------------------------------------------------------------------------------------------------
+		// Find out how mamny coins are in the level.
+		//	Get the coins game object, will only work if the coins game object is the first cild of the level prefab.
+		GameObject coinParent = levelPrefab.transform.GetChild(0).gameObject;
+		//	Get the child count of the coins game object.
+		initialCoinCount = coinParent.transform.childCount;
+		// Coin Stuff End.--------------------------------------------------------------------------------------------------------------------------------------
 	}
 
 	private void Update()
 	{
-		
+		Debug.Log(initialCoinCount);//------------------------------------------------------------ Initial coin count not saving after the start method finished running.
 		// Kill the player if their position on the Y-axis is less than -10;
 		if (player.transform.position.y < -10)
 		{
@@ -100,12 +112,25 @@ public class LevelManager : MonoBehaviour
 		endTimerText.text = minutes + ":" + seconds;
 		// End time text stuff. end
 
+		// Coin Stuff.-------------------------------------------------------------------------------------------------------------------------------------------------------------
+		// Find out how mamny coins are in the level.
+		//	Get the coins game object, will only work if the coins game object is the first cild of the level prefab.
+		GameObject coinParent = levelPrefab.transform.GetChild(0).gameObject;
+		//	Get the child count of the coins game object.
+		int endCoinCount = coinParent.transform.childCount;
+		//	Calculate how many coins we collected.
+		//int coinsCollected = Mathf.Abs (initialCoinCount - endCoinCount);
+		int coinsCollected =  (initialCoinCount - endCoinCount);
+		coinsCollectedText.text = "Coins Collected : " + coinsCollected;
+		// Coin Stuff End.-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 		// Star Stuff.
 		GameObject starOne = gameplayUICanvas.transform.GetChild(6).GetChild(3).GetChild(0).gameObject;
 		GameObject starTwo = gameplayUICanvas.transform.GetChild(6).GetChild(3).GetChild(1).gameObject;
 		GameObject starThree = gameplayUICanvas.transform.GetChild(6).GetChild(3).GetChild(2).gameObject;
 		// Star Stuff End.
 
+		//	If we complete the level within the Gold Time.
 		if (levelDuration < goldTime)
 		{
 			GameManager.Instance.currency += 50;
@@ -114,6 +139,7 @@ public class LevelManager : MonoBehaviour
 			starTwo.GetComponent<Image>().enabled = true;
 			starThree.GetComponent<Image>().enabled = true;
 		}
+		//	If we complete the level within the Silver Time.
 		else if (levelDuration < silverTime)
 		{
 			GameManager.Instance.currency += 25;
@@ -121,14 +147,16 @@ public class LevelManager : MonoBehaviour
 			starOne.GetComponent<Image>().enabled = true;
 			starTwo.GetComponent<Image>().enabled = true;
 		}
+		//	If we complete the level within the Bronze Time.
 		else
 		{
 			GameManager.Instance.currency += 10;
 			// enable 1 star.
 			starOne.GetComponent<Image>().enabled = true;
 		}
+		//	Save everything
 		GameManager.Instance.Save();
-
+		// TODO - Find out what this all means
 		string saveString = "";
 		LevelData level = new LevelData(SceneManager.GetActiveScene().name);
 		saveString += (level.BestTime > levelDuration || level.BestTime == 0.0f) ? levelDuration.ToString() : level.BestTime.ToString();
@@ -142,10 +170,6 @@ public class LevelManager : MonoBehaviour
 
 	public void Death()
 	{
-		//player.transform.position = respawnPoint.position;
-		//Rigidbody rigid = player.GetComponent<Rigidbody>(); //// These are commented out becouse N3K commented them out intead of deleting them.
-		//rigid.velocity = Vector3.zero;
-		//rigid.angularVelocity = Vector3.zero;
 		RestartLevel();
 	}
 }
