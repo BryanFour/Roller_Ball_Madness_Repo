@@ -31,6 +31,10 @@ public class LevelManager : MonoBehaviour
 	private int initialCoinCount = 0;
 	public Text coinsCollectedText;
 	//	Coin Count Stuff End.
+	// Flashing Time Stuff.
+	public GameObject flashingGoldTime;
+	public GameObject flashingSilverTime;
+	public GameObject flashingBronzeTime;
 
 	private float startTime;
 	private float levelDuration; // how long we have been playing the level for.
@@ -42,6 +46,11 @@ public class LevelManager : MonoBehaviour
 		instance = this;
 		pauseMenu.SetActive(false);
 		endMenu.SetActive(false);
+		//	Flashing Time texts.
+		flashingGoldTime.SetActive(false);
+		flashingSilverTime.SetActive(false);		//------- Disable these at runtime.
+		flashingBronzeTime.SetActive(false);
+		//	Flashing Time texts end.
 		startTime = Time.time;
 		player = GameObject.FindGameObjectWithTag("Player");
 		player.transform.position = respawnPoint.position;
@@ -56,7 +65,7 @@ public class LevelManager : MonoBehaviour
 
 	private void Update()
 	{
-		Debug.Log(initialCoinCount);//------------------------------------------------------------ Initial coin count not saving after the start method finished running.
+		Debug.Log(initialCoinCount);
 		// Kill the player if their position on the Y-axis is less than -10;
 		if (player.transform.position.y < -10)
 		{
@@ -138,6 +147,8 @@ public class LevelManager : MonoBehaviour
 			starOne.GetComponent<Image>().enabled = true;
 			starTwo.GetComponent<Image>().enabled = true;
 			starThree.GetComponent<Image>().enabled = true;
+			// Enable Flashing Gold Time.
+			flashingGoldTime.SetActive(true);
 		}
 		//	If we complete the level within the Silver Time.
 		else if (levelDuration < silverTime)
@@ -146,6 +157,8 @@ public class LevelManager : MonoBehaviour
 			// Enable 2 stars
 			starOne.GetComponent<Image>().enabled = true;
 			starTwo.GetComponent<Image>().enabled = true;
+			// Enable Flashing Silver Time.
+			flashingSilverTime.SetActive(true);
 		}
 		//	If we complete the level within the Bronze Time.
 		else
@@ -153,6 +166,8 @@ public class LevelManager : MonoBehaviour
 			GameManager.Instance.currency += 10;
 			// enable 1 star.
 			starOne.GetComponent<Image>().enabled = true;
+			// Enable Flashing Bronze Time.
+			flashingBronzeTime.SetActive(true);
 		}
 		//	Save everything
 		GameManager.Instance.Save();
