@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-	private const float TIME_BEFORE_START = 3.0f; // Any changes to this value also have to be changed in the LevelManager script.
+	private const float TIME_BEFORE_START = 4.0f; // Any changes to this value also have to be changed in the LevelManager script.
 
 	public float moveSpeed = 5.0f;
 	public float drag = .5f;

@@ -15,7 +15,7 @@ using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
-	private const float TIME_BEFORE_START = 3.0f;   // Any changes to this value also have to be changed in the PlayerController script.
+	private const float TIME_BEFORE_START = 4.0f;   // Any changes to this value also have to be changed in the PlayerController script.
 
 	private static LevelManager instance;
 	public static LevelManager Instance { get { return instance; } }
@@ -36,12 +36,22 @@ public class LevelManager : MonoBehaviour
 	public GameObject flashingGoldTime;
 	public GameObject flashingSilverTime;
 	public GameObject flashingBronzeTime;
+	//	Count Down Stuff.
+	public GameObject[] countDownArray;
 
 	private float startTime;
 	private float levelDuration; // how long we have been playing the level for.
 	public float silverTime;
 	public float goldTime;
 
+	private void Awake()
+	{	//	Count down stuff.
+		countDownArray[0].SetActive(false);
+		countDownArray[1].SetActive(false);
+		countDownArray[2].SetActive(false);
+		countDownArray[3].SetActive(false);
+		//	Count down stuff end.
+	}
 	private void Start()
 	{
 		instance = this;
@@ -62,6 +72,9 @@ public class LevelManager : MonoBehaviour
 		//	Get the child count of the coins game object.
 		initialCoinCount = coinParent.transform.childCount;
 		// Coin Stuff End.--------------------------------------------------------------------------------------------------------------------------------------
+		//	Count Down Stuff.
+		StartCoroutine(CountDown());
+		//	Count Down Stuff End.
 	}
 
 	private void Update()
@@ -186,5 +199,21 @@ public class LevelManager : MonoBehaviour
 	public void Death()
 	{
 		RestartLevel();
+	}
+
+	IEnumerator CountDown()
+	{	//	Enable/Disable elemets from the Count down array.
+		countDownArray[0].SetActive(true);
+		yield return new WaitForSecondsRealtime(1);
+		countDownArray[0].SetActive(false);
+		countDownArray[1].SetActive(true);
+		yield return new WaitForSecondsRealtime(1);
+		countDownArray[1].SetActive(false);
+		countDownArray[2].SetActive(true);
+		yield return new WaitForSecondsRealtime(1);
+		countDownArray[2].SetActive(false);
+		countDownArray[3].SetActive(true);
+		yield return new WaitForSecondsRealtime(1);
+		countDownArray[3].SetActive(false);
 	}
 }
