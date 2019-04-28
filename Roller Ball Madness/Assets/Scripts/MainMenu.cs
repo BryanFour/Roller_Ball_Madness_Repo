@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 // Video 1 - https://www.youtube.com/watch?v=mRC7sz-NAcE&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=2
 // Video 2 - https://www.youtube.com/watch?v=a0fYMnurBUk&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=3
 // Video 3 - https://www.youtube.com/watch?v=S1fRoRbNwSs&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=4
@@ -44,12 +45,12 @@ public class MainMenu : MonoBehaviour
 	public GameObject levelButtonContainer;
 	public GameObject shopButtonPrefab;
 	public GameObject shopButtonContainer;
-	public Text currencyText;
+	public TextMeshProUGUI currencyText;
 
-	// My Changes
+	// Player Skin Stuff.
 	public Material[] playerMatArray;
 	public GameObject playerPrefab;
-	// My Changes End.
+	// Player Skin Stuff End.
 
 	private Transform cameraTransform;
 	private Transform cameraDesiredLookAt;
@@ -66,25 +67,26 @@ public class MainMenu : MonoBehaviour
 		currencyText.text = "Currency : " + GameManager.Instance.currency.ToString();
 		cameraTransform = Camera.main.transform;
 		
+		// Level Buttons Stuff.
 		Sprite[] thumbnails = Resources.LoadAll<Sprite>("Levels"); // Create an array of all the sprites that are inside the Resores>Levels Folder
 		foreach(Sprite thumbnail in thumbnails) //For every sprite in this "thumbnails" array...
 		{
 			GameObject container = Instantiate(levelButtonPrefab) as GameObject; // Create a new button
-			container.GetComponent<Image>().sprite = thumbnail; // Change background image for the thumbnail // Uncomment if this dosnt work
-			container.transform.SetParent(levelButtonContainer.transform,false); //Set the prefabs parent to levelButtonContainer. // The "false" tells the prefab not to use its own position but instead use the parents position.
+			container.GetComponent<Image>().sprite = thumbnail; // Change background image for the thumbnail.
+			container.transform.SetParent(levelButtonContainer.transform, false); //Set the prefabs parent to levelButtonContainer. // The "false" tells the prefab not to use its own position but instead use the parents position.
 			
 			LevelData level = new LevelData(thumbnail.name);
 
 			string minutes = ((int)level.BestTime / 60).ToString("00"); // Used to have the best time sow in seconds and minutes rather that just seconds.
-			string seconds = (level.BestTime % 60).ToString("00.00"); // Used to have the best time sow in seconds and minutes rather that just seconds. -------Best time nolonger saving
-
-			container.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = (level.BestTime != 0.0f) ? minutes + ":" + seconds : "Not Completed";
-
+			string seconds = (level.BestTime % 60).ToString("00.00"); // Used to have the best time sow in seconds and minutes rather that just seconds.
+			//	Set the Best Time text to the players best time.
+			container.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = (level.BestTime != 0.0f) ? minutes + ":" + seconds : "Not Completed";
+			//	Locked Overlay stuff.
 			container.transform.GetChild(2).GetComponent<Image>().enabled = nextLevelLocked; // Have the LockedOverlays image componant enabled/disabled depending on wether nextLevellocked is true or false.
-			container.transform.GetChild(2).GetChild(0).GetComponent<Text>().enabled = nextLevelLocked; // Have the LockedOverlays childs text componant enabled/disabled depending on wether nextLevellocked is true or false.
+			container.transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().enabled = nextLevelLocked; // Have the LockedOverlays childs text componant enabled/disabled depending on wether nextLevellocked is true or false.
 			container.GetComponent<Button>().interactable = !nextLevelLocked; // Make the ButtonPanel interactable/not interactable depending on wether nextLevelLocked is true or false.
+			//	Locked Overlay stuff End.
 
-			
 			GameObject starOne = container.transform.GetChild(1).GetChild(0).GetChild(0).gameObject;
 			GameObject starTwo = container.transform.GetChild(1).GetChild(0).GetChild(1).gameObject;
 			GameObject starThree = container.transform.GetChild(1).GetChild(0).GetChild(2).gameObject;
@@ -116,6 +118,7 @@ public class MainMenu : MonoBehaviour
 			string sceneName = thumbnail.name;
 			container.GetComponent<Button>().onClick.AddListener(() => LoadLevel(sceneName));
 		}
+		// Level Buttons Stuff End.
 
 		// ---- Shop Stuff
 		int textureIndex = 0;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 // Video ? - https://www.youtube.com/watch?v=3yesq9qmvUk&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=14
 // Video 3 - https://www.youtube.com/watch?v=UUbTAphpq40&list=PLLH3mUGkfFCWCsGUfwLMnDWdkpQuqW3xa&index=18 -- Player repawn after falling off level.
@@ -22,14 +23,14 @@ public class LevelManager : MonoBehaviour
 	public GameObject pauseMenu;
 	public GameObject endMenu;
 	public Transform respawnPoint;
-	public Text timerText;
-	public Text endTimerText; // The time text that is on the win/level end panel 
+	public TextMeshProUGUI timerText;
+	public TextMeshProUGUI endTimerText; // The time text that is on the win/level end panel 
 	public GameObject gameplayUICanvas;
 	private GameObject player;
 	//	Coin Count Stuff.
 	public GameObject levelPrefab; //	The Level prefab, needed to to get the child.count of coins.
 	private int initialCoinCount = 0;
-	public Text coinsCollectedText;
+	public TextMeshProUGUI coinsCollectedText;
 	//	Coin Count Stuff End.
 	// Flashing Time Stuff.
 	public GameObject flashingGoldTime;
@@ -65,7 +66,6 @@ public class LevelManager : MonoBehaviour
 
 	private void Update()
 	{
-		Debug.Log(initialCoinCount);
 		// Kill the player if their position on the Y-axis is less than -10;
 		if (player.transform.position.y < -10)
 		{
@@ -134,9 +134,9 @@ public class LevelManager : MonoBehaviour
 		// Coin Stuff End.-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 		// Star Stuff.
-		GameObject starOne = gameplayUICanvas.transform.GetChild(6).GetChild(3).GetChild(0).gameObject;
-		GameObject starTwo = gameplayUICanvas.transform.GetChild(6).GetChild(3).GetChild(1).gameObject;
-		GameObject starThree = gameplayUICanvas.transform.GetChild(6).GetChild(3).GetChild(2).gameObject;
+		GameObject starOne = gameplayUICanvas.transform.GetChild(7).GetChild(3).GetChild(0).gameObject;
+		GameObject starTwo = gameplayUICanvas.transform.GetChild(7).GetChild(3).GetChild(1).gameObject;
+		GameObject starThree = gameplayUICanvas.transform.GetChild(7).GetChild(3).GetChild(2).gameObject;
 		// Star Stuff End.
 
 		//	If we complete the level within the Gold Time.

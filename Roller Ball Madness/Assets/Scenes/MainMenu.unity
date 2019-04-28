@@ -193,7 +193,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 2.69e-43, y: 6e-44, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: NaN, y: 0, z: 0, w: 2.8903e-41}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -387,7 +387,7 @@ MonoBehaviour:
   shopButtonPrefab: {fileID: 7181926110339874669, guid: 43945daf729848e499324ab05d944285,
     type: 3}
   shopButtonContainer: {fileID: 1774089962}
-  currencyText: {fileID: 1136316650}
+  currencyText: {fileID: 1144840867}
   playerMatArray:
   - {fileID: 2100000, guid: 13f617a7030a5904592f3220168f2363, type: 2}
   - {fileID: 2100000, guid: ca951a36bb708fa4596ab58ae6551bed, type: 2}
@@ -420,16 +420,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1136316650 stripped
+--- !u!114 &1144840867 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3278556590286607030, guid: ccd9036adb77e8e41853800185155d9e,
+  m_CorrespondingSourceObject: {fileID: 1144840867, guid: ccd9036adb77e8e41853800185155d9e,
     type: 3}
   m_PrefabInstance: {fileID: 3278556591421801052}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1217267691
@@ -602,12 +602,12 @@ PrefabInstance:
     - target: {fileID: 5083609748391116746, guid: 57d7552fef897254291bd9e6b01d7a2f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 68
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 5083609748391116746, guid: 57d7552fef897254291bd9e6b01d7a2f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 5083609748391116746, guid: 57d7552fef897254291bd9e6b01d7a2f,
         type: 3}
@@ -698,11 +698,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI MainMenu Container
-      objectReference: {fileID: 0}
-    - target: {fileID: 3278556590286607030, guid: ccd9036adb77e8e41853800185155d9e,
-        type: 3}
-      propertyPath: m_FontData.m_BestFit
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3278556589598562209, guid: ccd9036adb77e8e41853800185155d9e,
         type: 3}
