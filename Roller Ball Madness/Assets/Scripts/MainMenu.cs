@@ -58,7 +58,9 @@ public class MainMenu : MonoBehaviour
 	private bool nextLevelLocked = false;
 
 	// 16 skins, 16 prices, change as needed.
-	private int[] costs = { 0, 150, 150, 150, 300, 300, 300, 300, 500, 500, 500, 500, 1000, 1250, 1500, 2000 };
+	//private int[] costs = { 0, 150, 150, 150, 300, 300, 300, 300, 500, 500, 500, 500, 1000, 1250, 1500, 2000 };
+	// Debug prices.
+	private int[] costs = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
 	private void Start()
 	{

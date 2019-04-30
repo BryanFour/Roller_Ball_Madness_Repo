@@ -14,16 +14,16 @@ public class PlayerController : MonoBehaviour
 	public VirtualJoystick moveJoystick;
 
 	//Boost Stuff
-	private float boostSpeed = 20f;
+	private float boostSpeed = 15f;
 	public float boostCooldown = 2f;
 	private float lastBoost;
 	//Jump Stuff
-	private float jumpForce = 10f;
+	private float jumpForce = 15f;
 	private float jumpCooldown = 2f;
 	private float lastJump;
 	private bool canJump = true;
 	// Moving Obsticle Collision Stuff
-	public float colForce = 5;
+	public float colForce = 3;
 
 	private Rigidbody rigidB;
 	private Transform camTransform;

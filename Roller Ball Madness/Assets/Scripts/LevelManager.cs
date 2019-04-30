@@ -27,6 +27,7 @@ public class LevelManager : MonoBehaviour
 	public TextMeshProUGUI endTimerText; // The time text that is on the win/level end panel 
 	public GameObject gameplayUICanvas;
 	private GameObject player;
+	private LevelData LevelData; // Get access to the LevelData class from the mainmenu script.
 	//	Coin Count Stuff.
 	public GameObject levelPrefab; //	The Level prefab, needed to to get the child.count of coins.
 	private int initialCoinCount = 0;
@@ -99,7 +100,13 @@ public class LevelManager : MonoBehaviour
 	}
 
 	public void TogglePauseMenu()
-	{
+	{	//	If the game hasnt started yet / The count down hasnt finished / The timer hasnt started
+		//	Dont allow the player to pause by "Returning" out of this method
+		if (Time.time - startTime < TIME_BEFORE_START)
+		{
+			return;
+		}
+		//	Else allow the player to use the pause menu.
 		pauseMenu.SetActive(!pauseMenu.activeSelf);
 		Time.timeScale = (pauseMenu.activeSelf) ? 0 : 1;
 	}
@@ -204,16 +211,16 @@ public class LevelManager : MonoBehaviour
 	IEnumerator CountDown()
 	{	//	Enable/Disable elemets from the Count down array.
 		countDownArray[0].SetActive(true);
-		yield return new WaitForSecondsRealtime(1);
+		yield return new WaitForSecondsRealtime(.95f);
 		countDownArray[0].SetActive(false);
 		countDownArray[1].SetActive(true);
-		yield return new WaitForSecondsRealtime(1);
+		yield return new WaitForSecondsRealtime(.95f);
 		countDownArray[1].SetActive(false);
 		countDownArray[2].SetActive(true);
-		yield return new WaitForSecondsRealtime(1);
+		yield return new WaitForSecondsRealtime(.95f);
 		countDownArray[2].SetActive(false);
 		countDownArray[3].SetActive(true);
-		yield return new WaitForSecondsRealtime(1);
+		yield return new WaitForSecondsRealtime(.95f);
 		countDownArray[3].SetActive(false);
 	}
 }
